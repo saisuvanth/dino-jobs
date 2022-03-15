@@ -1,7 +1,7 @@
 {
-  "name": "mapty",
+  "name": "dinojobs",
   "version": "1.0.0",
-  "description": "A map based social media app",
+  "description": "Job Searching Platform",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,19 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/faisal-kn/fsd-project.git"
+    "url": "git+https://github.com/saisuvanth/dino-jobs.git"
   },
-  "author": "Faisal",
+  "author": "Suvanth",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/faisal-kn/fsd-project/issues"
+    "url": "https://github.com/saisuvanth/dino-jobs/issues"
   },
-  "homepage": "https://github.com/faisal-kn/fsd-project#readme",
+  "homepage": "https://github.com/saisuvanth/dino-jobs#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
   }
 }
