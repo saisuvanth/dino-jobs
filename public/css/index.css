@@ -1,0 +1,172 @@
+body {
+    background-color: #d6f7e7;
+  }
+  
+  .outer {
+   
+   
+    width: 1150px;
+    height: 650px;
+    /* border-style: solid; */
+    background-color:white;
+    border-radius: 10px;
+    display: flex;
+  }
+  /* 
+  .inner {
+     margin-left: 4%;
+     margin-top: 4%;
+     width: 950px;
+     height: 550px;
+     border-style: solid;
+     background-color: white;
+     border-radius: 18px;
+     display:none;
+  } */
+  
+  .inline {
+    display: flex;
+    margin-left: 12%;
+    margin-top: 5%;
+  }
+  
+  .icons {
+    width: 65px;
+    height: 550px;
+    /* border-style: solid; */
+    margin-top: 4%;
+    background-color: #5be5a9;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  /* .home {
+    border-style: solid;
+    border-radius: 4px;
+    width: 10px;
+    height: 10px;
+  } */
+  
+  .scroll {
+    width: 500px;
+    height: 550px;
+    /* border-style: solid; */
+    border-radius: 14px;
+    margin-top: 4%;
+    margin-left: 4%;
+    display: inline-block;
+   
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .image {
+    margin-top: 1%;
+    background-color: #5be5a9;
+    border-radius: 17px;
+    width:590px;
+    height:625px;
+  }
+  
+  img {
+    margin-left:8%;
+    margin-top: 10%;
+    height: 500px;
+    width: 490px;
+  }
+  
+  .text {
+    margin-top: 50%;
+  }
+  
+  
+  
+  
+  h2{
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .loginmain{
+    margin: auto;
+    margin-top: 50px;
+  
+    border-radius: 20px;
+    height: 500px;
+    width: 380px;
+  }
+  
+  .heads{
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .boxmain{
+    background: none;
+    border: 2px solid;
+    height: 30px;
+    width: 275px;
+    border-radius: 2em;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: white;
+  }
+  
+  .button{
+    cursor: pointer;
+    background: none;
+    background-color:#5be5a9;
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+    border: 2px solid;
+    padding: 0.5em 1em;
+    transition: all 0.25s;
+    border-radius: 2em;
+    margin-top: 20px;
+  }
+  
+  .logoogle{
+    cursor: pointer;
+    background: none;
+    background-color:#5be5a9;
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+    border: 2px solid;
+    padding: 0.5em 1em;
+    transition: all 0.25s;
+    border-radius: 2em;
+    margin-top: 20px;
+  }
+  
+  .fa-google{
+    padding-left: 10px;
+  }
+  
+  /* 
+  @media only screen and (max-width: 750px) {
+    .outer{
+      display: block;
+    }
+    .inline {
+      display:block;
+    }
+  
+    .image {
+      display:none;
+    }
+    .icons{
+      width: 500px;
+      height : 20px;
+      display: inline-block;
+    }
+  } */
+  

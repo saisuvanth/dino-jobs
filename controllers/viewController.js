@@ -3,5 +3,5 @@ exports.getLogin = function (req, res, next) {
 };
 
 exports.getHome = function (req, res, next) {
-  res.status(200).render("home", { title: "Home" });
+  res.status(200).render("pages/index", { title: "Home" });
 };

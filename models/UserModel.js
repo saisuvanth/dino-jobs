@@ -3,7 +3,7 @@ const isEmail = require('validator/lib/isEmail');
 const {sign}=require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 
-const UserModel=new Schema({
+const UserSchema=new Schema({
 	first_name:{
 		type:String,
 		required:true
@@ -149,4 +149,4 @@ UserSchema.pre('save', function (next) {
 		next();
 })
 
-module.exports=model('User',UserModel);
+module.exports=model('User',UserSchema);
