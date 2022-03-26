@@ -4,17 +4,14 @@ const {sign}=require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 
 const UserSchema=new Schema({
-	first_name:{
-		type:String,
-		required:true
-	},
-	last_name:{
+	full_name:{
 		type:String,
 		required:true
 	},
 	email:{
 		type:String,
 		required:true,
+		unique:true,
 		validate: {
 			validator: isEmail,
 			message: `{VALUE} is not a valid email`
@@ -22,11 +19,7 @@ const UserSchema=new Schema({
 	},
 	password:{
 		type:String,
-		required:true
-	},
-	username:{
-		type:String,
-		required:true
+		required:true,
 	},
 	type:{
 		type:String,

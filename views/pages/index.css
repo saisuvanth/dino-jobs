@@ -1,0 +1,160 @@
+.right-sec {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.image-holder {
+  /* position: absolute; */
+  z-index: 1;
+  width: 30%;
+}
+
+.image-holder img {
+  width: 300%;
+}
+
+.right-card {
+  z-index: 0;
+  background-color: #b8f5d7;
+  height: 97%;
+  width: 100%;
+  margin-left: auto;
+  border-radius: 1rem;
+}
+/* ============================= */
+
+.left-sec {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left-sec {
+  direction: ltr;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.left-sec::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+.left-sec::-webkit-scrollbar-thumb {
+  background-color: #b8f5d7;
+  border-radius: 10px;
+}
+
+.landing {
+  padding-left: 1rem;
+}
+
+.landing h1 {
+  font-size: 4.2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+
+.landing p {
+  font-size: 1.8rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  padding-top: 1rem;
+}
+
+.get-started-btn {
+  background-color: #b8f5d7;
+  border-radius: 56px;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.4rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
+  border: none;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 324px;
+  margin: 0 auto;
+  font-family: Arbeit, sans-serif;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5;
+  padding-bottom: 0;
+  padding-top: 48px;
+}
+
+.header,
+.logo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.tags {
+  display: block;
+  font-weight: 500;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.form {
+  width: 100%;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  background: none;
+  border: 2px solid black;
+}
+.form:focus {
+  background-color: #baf5e4;
+  transition: 1s;
+}
+
+.button {
+  background: none;
+  background-color: #3ad6ab;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  border: 2px solid;
+
+  transition: all 0.25s;
+  border-radius: 0.3em;
+  margin-top: 6px;
+  transition: all 0.25s;
+  width: 40%;
+  height: 50px;
+}
+
+.button:hover {
+  background-color: #37f5bf;
+  transform: translateY(-0.12em);
+  color: black;
+  border-color: black;
+}
+
+.signin {
+  background-color: #b8f5d7;
+  text-align: center;
+  width: 450px;
+  height: 40px;
+  border-radius: 14px;
+  justify-content: center;
+  margin-left: 3%;
+}
+
+.signing {
+  cursor: pointer;
+  text-decoration: none;
+}
