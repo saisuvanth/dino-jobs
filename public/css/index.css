@@ -1,172 +1,128 @@
-body {
-    background-color: #d6f7e7;
-  }
-  
-  .outer {
-   
-   
-    width: 1150px;
-    height: 650px;
-    /* border-style: solid; */
-    background-color:white;
-    border-radius: 10px;
-    display: flex;
-  }
-  /* 
-  .inner {
-     margin-left: 4%;
-     margin-top: 4%;
-     width: 950px;
-     height: 550px;
-     border-style: solid;
-     background-color: white;
-     border-radius: 18px;
-     display:none;
-  } */
-  
-  .inline {
-    display: flex;
-    margin-left: 12%;
-    margin-top: 5%;
-  }
-  
-  .icons {
-    width: 65px;
-    height: 550px;
-    /* border-style: solid; */
-    margin-top: 4%;
-    background-color: #5be5a9;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-  
-  /* .home {
-    border-style: solid;
-    border-radius: 4px;
-    width: 10px;
-    height: 10px;
-  } */
-  
-  .scroll {
-    width: 500px;
-    height: 550px;
-    /* border-style: solid; */
-    border-radius: 14px;
-    margin-top: 4%;
-    margin-left: 4%;
-    display: inline-block;
-   
-    text-align: center;
-    font-weight: 600;
-  }
-  
-  .image {
-    margin-top: 1%;
-    background-color: #5be5a9;
-    border-radius: 17px;
-    width:590px;
-    height:625px;
-  }
-  
-  img {
-    margin-left:8%;
-    margin-top: 10%;
-    height: 500px;
-    width: 490px;
-  }
-  
-  .text {
-    margin-top: 50%;
-  }
-  
-  
-  
-  
-  h2{
-    font-size: 30px;
-    font-weight: 700;
-    text-align: center;
-    padding-top: 15px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .loginmain{
-    margin: auto;
-    margin-top: 50px;
-  
-    border-radius: 20px;
-    height: 500px;
-    width: 380px;
-  }
-  
-  .heads{
-    font-size: 25px;
-    font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .boxmain{
-    background: none;
-    border: 2px solid;
-    height: 30px;
-    width: 275px;
-    border-radius: 2em;
-    padding: 5px 10px;
-    font-size: 20px;
-    font-weight: 300;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    background-color: white;
-  }
-  
-  .button{
-    cursor: pointer;
-    background: none;
-    background-color:#5be5a9;
-    color: black;
-    font-size: 20px;
-    font-weight: 400;
-    border: 2px solid;
-    padding: 0.5em 1em;
-    transition: all 0.25s;
-    border-radius: 2em;
-    margin-top: 20px;
-  }
-  
-  .logoogle{
-    cursor: pointer;
-    background: none;
-    background-color:#5be5a9;
-    color: black;
-    font-size: 20px;
-    font-weight: 400;
-    border: 2px solid;
-    padding: 0.5em 1em;
-    transition: all 0.25s;
-    border-radius: 2em;
-    margin-top: 20px;
-  }
-  
-  .fa-google{
-    padding-left: 10px;
-  }
-  
-  /* 
-  @media only screen and (max-width: 750px) {
-    .outer{
-      display: block;
+.right-sec {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.image-holder {
+  /* position: absolute; */
+  z-index: 1;
+  width: 30%;
+}
+
+.image-holder svg {
+  width: 300%;
+}
+
+.right-card {
+  z-index: 0;
+  background-color: #b8f5d7;
+  height: 97%;
+  width: 100%;
+  margin-left: auto;
+  border-radius: 1rem;
+}
+/* ============================= */
+
+.left-sec {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.landing {
+  width: 80%;
+}
+
+.landing {
+    animation: bottomToTop 3s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.landing h1 {
+  font-size: 4.2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+
+.landing h2 {
+  font-size: 2.5rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
+.login-header {
+  border-bottom: 1px solid #757575;
+}
+
+/* #login {
+  display: none;
+} */
+
+.landing p {
+  font-size: 1.8rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  padding-top: 1rem;
+}
+
+button {
+  background-color: #b8f5d7;
+  border-radius: 24px;
+  padding: 0.3rem 1.3rem;
+  font-size: 1.1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
+  border: none;
+}
+
+.home-btn {
+  padding: 0.5rem 1.3rem;
+}
+
+.btn-grad {
+  background-image: linear-gradient(
+    96deg,
+    #018471 0%,
+    #07c0a8 51%,
+    #018673 100%
+  );
+}
+.btn-grad {
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: top; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+@keyframes bottomToTop {
+    0% {
+      opacity: 0;
+      transform: translateY(25px);
     }
-    .inline {
-      display:block;
+    25% {
+      opacity: 0.7;
+      transform: translateY(0);
     }
-  
-    .image {
-      display:none;
+    50% {
+      opacity: 0.9;
+      transform: translateY(0);
     }
-    .icons{
-      width: 500px;
-      height : 20px;
-      display: inline-block;
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
-  } */
-  
+  }

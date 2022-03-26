@@ -5,7 +5,9 @@ const userController = require("../controllers/userController");
 const router = Router();
 
 router.get("/login", viewController.getLogin);
-// router.post('/signup', authController.signup);
+router.post('/signup', authController.signup);
 router.get("/", viewController.getHome);
+
+
 
 module.exports = router;
