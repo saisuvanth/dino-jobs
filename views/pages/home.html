@@ -36,7 +36,7 @@
 <body>
 	<nav class="main-nav">
 		<ul>
-			<li>
+			<li class="active">
 				<a href="#" class="has-subnav">
 					<i style="height: fit-content;" class="fa fa-home fa-2x"></i>
 					<span class="nav-text">Home</span>
@@ -62,7 +62,7 @@
 			</li>
 		</ul>
 	</nav>
-	<button id="filter-btn" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+	<button id="filter-btn" class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
 		<i style="height: fit-content;width: fit-content;" class="fa fa-filter"></i>
 	  </button>
 	<div class="main">
@@ -95,8 +95,11 @@
 			</div>
 			<div class="row">
 				<div  class="col-md-3 col-sm-0" tabindex="-1" id="filter-parent" aria-labelledby="offcanvasExampleLabel">
-					<div class="mycol-1">
-						<h4>filters</h4>
+					<div id="mycol-1">
+						<div class="offcanvas-header">
+							<h4 class="offcanvas-title" id="offcanvasExampleLabel">FILTERS</h4>
+							<button type="button" id="filter-close-button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
 						<div class="filter-container">
 							<h5 class="filter-container-head">Role</h5>
 							<ul style="list-style: none; padding-left: 10px;">
