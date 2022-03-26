@@ -3,7 +3,7 @@ const homeDisplay = document.getElementById("home");
 const signDisplay = document.getElementById("signup");
 const logDisplay = document.getElementById("login");
 
-homeDisplay.style.display = "none";
+signDisplay.style.display = "none";
 logDisplay.style.display = "none";
 
 function displayHome() {
@@ -26,7 +26,22 @@ function displayLogin() {
 
 //Validating the form
 function handleSubmit(event) {
-  event.preventDefault();
+  // event.preventDefault();
   console.log(event);
-  return true;
+  const form = event.target;
+  const data = new FormData(form);
+  console.log(data);
+  const password = data.get("password");
+  const confirmPassword = data.get("confirmPassword");
+  console.log(password, confirmPassword);
+  if (password !== confirmPassword) {
+    let passwords = document.getElementsByClassName("password-error");
+    for (let i = 0; i < passwords.length; i++) {
+      passwords[i].innerText = "Passwords do not match";
+      passwords[i].classList.remove("text-muted");
+      passwords[i].style.color = "red";
+    }
+    // alert("Passwords do not match");
+    return false;
+  }
 }

@@ -1,5 +1,6 @@
-const signup = (data) => {
+const signup = () => {
     console.log(data);
+
     return "urmom0";
 }
 

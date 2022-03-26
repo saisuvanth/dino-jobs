@@ -1,3 +1,40 @@
+/* Global stylings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #02564b;
+}
+
+a:hover {
+  color: #03a791;
+  transition: 0.65s ease-in-out all;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.form-check-input[type="checkbox"]:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.form-check-input[type="checkbox"]:checked {
+  background-color: #018673;
+  transition: 0.3s ease-in-out all;
+}
+
+.form-check-input[type="checkbox"] {
+  background-color: #eefffd;
+  transition: 0.3s ease-in-out all;
+}
+
 .right-sec {
   height: 100vh;
   width: 100%;
@@ -32,13 +69,11 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.landing {
-  width: 80%;
-}
 
 .landing {
-    animation: bottomToTop 3s ease-in-out;
-    transition: all 0.5s ease-in-out;
+  width: 90%;
+  animation: bottomToTop 3s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .landing h1 {
@@ -107,22 +142,21 @@ button {
   text-decoration: none;
 }
 
-
 @keyframes bottomToTop {
-    0% {
-      opacity: 0;
-      transform: translateY(25px);
-    }
-    25% {
-      opacity: 0.7;
-      transform: translateY(0);
-    }
-    50% {
-      opacity: 0.9;
-      transform: translateY(0);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
   }
+  25% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

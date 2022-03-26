@@ -5,8 +5,8 @@ const userController = require("../controllers/userController");
 const router = Router();
 
 router.get("/login", viewController.getLogin);
-router.post('/signup', authController.signup);
 router.get("/", viewController.getHome);
+router.get("/profile", viewController.getProfile); // add authController.isLoggedIn as a middleware
 
 
 

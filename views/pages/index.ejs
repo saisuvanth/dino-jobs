@@ -65,7 +65,7 @@
               </ul>
             </div>
           </nav>
-          <div class="left-sec justify-content-center">
+          <div class="left-sec justify-content-lg-end">
             <div id="home" class="landing">
               <h1 class="">Remote Jobs <br />for anyone<br />anywhere.</h1>
               <p>Thousands of Jobs, get yours here owo.</p>
@@ -78,8 +78,13 @@
                 class="card p-4"
                 style="border-radius: 16px; box-shadow: 10px"
               >
-                <h2 class="mb-4 pb-3 login-header">Login</h2>
-                <form class="p-3" action="">
+                <h2 class="mb-4 pb-3 login-header">
+                  <a onclick="displayHome()" href="#"
+                    ><i class="fas fa-angle-left"></i
+                  ></a>
+                  Login
+                </h2>
+                <form class="p-3" action="/login" method="post">
                   <div class="form-group mb-3">
                     <label class="pb-1" for="emailId">Email address</label>
                     <div class="input-group mb-1">
@@ -95,12 +100,14 @@
                         <i class="fas fa-envelope"></i>
                       </span>
                       <input
-                        type="text"
+                        type="email"
                         class="form-control"
                         placeholder="john.doe@gmail.com"
                         style="border-left: none; border-radius: 0 16px 16px 0"
                         aria-label="emailId"
+                        name="emailId"
                         aria-describedby="basic-addon1"
+                        required
                       />
                     </div>
                     <small id="emailHelp" class="form-text text-muted"
@@ -125,9 +132,11 @@
                         type="password"
                         class="form-control"
                         placeholder="Password@123"
+                        name="password"
                         style="border-left: none; border-radius: 0 16px 16px 0"
                         aria-label="password"
                         aria-describedby="basic-addon1"
+                        required
                       />
                     </div>
                     <small id="passwordHelp" class="form-text text-muted"
@@ -139,6 +148,7 @@
                       type="checkbox"
                       class="form-check-input"
                       id="signedInCheck"
+                      name="signedInCheck"
                     />
                     <label class="form-check-label" for="signedInCheck"
                       >Check me out</label
@@ -146,6 +156,11 @@
                   </div>
                   <button type="submit" class="btn-grad">Submit</button>
                 </form>
+                <div class="text-center">
+                  Not on Dino-Jobs yet?<a href="#" onclick="displaySignup()">
+                    Register Here</a
+                  >
+                </div>
               </div>
             </div>
             <div id="signup" class="landing">
@@ -153,7 +168,12 @@
                 class="card p-4"
                 style="border-radius: 16px; box-shadow: 10px"
               >
-                <h2 class="mb-4 pb-3 login-header">Register</h2>
+                <h2 class="mb-4 pb-3 login-header">
+                  <a onclick="displayHome()" href="#"
+                    ><i class="fas fa-angle-left"></i
+                  ></a>
+                  Register
+                </h2>
                 <form
                   class="p-3"
                   onsubmit="return handleSubmit(event)"
@@ -179,6 +199,7 @@
                         class="form-control"
                         placeholder="John Doe"
                         style="border-left: none; border-radius: 0 16px 16px 0"
+                        name="fullName"
                         aria-label="fullName"
                         aria-describedby="basic-addon1"
                         required
@@ -208,6 +229,7 @@
                         placeholder="john.doe@gmail.com"
                         style="border-left: none; border-radius: 0 16px 16px 0"
                         aria-label="emailId"
+                        name="emailId"
                         aria-describedby="basic-addon1"
                         required
                       />
@@ -237,11 +259,11 @@
                         placeholder="Password@123"
                         style="border-left: none; border-radius: 0 16px 16px 0"
                         aria-label="password"
-                        aria-describedby="basic-addon1"
+                        name="password"
                         required
                       />
                     </div>
-                    <small id="passwordHelp" class="form-text text-muted"
+                    <small id="passwordHelp" class="form-text text-muted password-error"
                       >Keep it safe uwu.</small
                     >
                   </div>
@@ -267,11 +289,11 @@
                         placeholder="Password@123"
                         style="border-left: none; border-radius: 0 16px 16px 0"
                         aria-label="confirmPassword"
-                        aria-describedby="basic-addon1"
+                        name="confirmPassword"
                         required
                       />
                     </div>
-                    <small id="passwordHelp" class="form-text text-muted"
+                    <small id="confirmPasswordHelp" class="form-text text-muted password-error"
                       >It should match the password above.</small
                     >
                   </div>
@@ -280,6 +302,7 @@
                       type="checkbox"
                       class="form-check-input"
                       id="signedInCheck"
+                      name="signedInCheck"
                     />
                     <label class="form-check-label" for="signedInCheck"
                       >Keep me signed in.</label
@@ -287,8 +310,9 @@
                   </div>
                   <button type="submit" class="btn-grad">Submit</button>
                 </form>
-                <div>
-                  Already registered? <a onclick="displayLogin()">Login Here</a>
+                <div class="text-center">
+                  Already registered?
+                  <a href="#" onclick="displayLogin()">Login Here</a>
                 </div>
               </div>
             </div>
