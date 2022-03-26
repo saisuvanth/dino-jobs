@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/public/css/home.css">
+	<link rel="stylesheet" href="navbar.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Dino Jobs</title>
+	<style>
+		::-webkit-scrollbar {
+  			width: 5px;
+		}
+
+		::-webkit-scrollbar-track {
+  			box-shadow: inset 0 0 5px grey;
+  			border-radius: 10px;
+		}
+
+		::-webkit-scrollbar-thumb {
+  			background: gray;
+  			border-radius: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="main-nav">
+		<ul>
+			<li>
+				<a href="#" class="has-subnav">
+					<i style="height: fit-content;" class="fa fa-home fa-2x"></i>
+					<span class="nav-text">Home</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="has-subnav">
+					<i style="height: fit-content;" class="fa fa-user fa-2x"></i>
+					<span class="nav-text">Profile</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="has-subnav">
+					<i style="height: fit-content;" class="fa fa-suitcase fa-2x"></i>
+					<span class="nav-text">Jobs</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="has-subnav">
+					<i style="height: fit-content;" class="fa fa-envelope fa-2x"></i>
+					<span class="nav-text">Messages</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<button id="filter-btn" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+		<i style="height: fit-content;width: fit-content;" class="fa fa-filter"></i>
+	  </button>
+	<div class="main">
+		<div class="container-fluid" style="min-height: 100vh; background-color: #ffffff;">
+			<div class="row pt-4">
+				<div class="col-lg-3 col-md-6 col-sm-12 form-container w-20">
+					<div class="input-group mb-3">
+						<span class="input-group-text"
+							style="background-color: white;border-right: 0px;border-radius: 30px 0px 0px 30px;"
+							id="basic-addon1">
+							<i class="fas fa-magnifying-glass"></i>
+						</span>
+						<input type="text" class="form-control"
+							style="border-left: 0px;border-radius: 0px 30px 30px 0px" placeholder="Search"
+							aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 form-container w-20">
+					<div class="input-group mb-3">
+						<span class="input-group-text"
+							style="background-color: white;border-right: 0px;border-radius: 30px 0px 0px 30px;"
+							id="basic-addon1">
+							<i class="fas fa-location"></i>
+						</span>
+						<input type="text" class="form-control"
+							style="border-left: 0px;border-radius: 0px 30px 30px 0px" placeholder="Location"
+							aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div  class="col-md-3 col-sm-0" tabindex="-1" id="filter-parent" aria-labelledby="offcanvasExampleLabel">
+					<div class="mycol-1">
+						<h4>filters</h4>
+						<div class="filter-container">
+							<h5 class="filter-container-head">Role</h5>
+							<ul style="list-style: none; padding-left: 10px;">
+								<li>
+									<input class="my-checkbox" type="checkbox" name="Job" id="job">
+									<label for="job">Job</label>
+								</li>
+								<li>
+									<input class="my-checkbox" type="checkbox" name="internship" id="internship">
+									<label for="internship">Internship</label>
+								</li>
+							</ul>
+						</div>
+						<div class="filter-container">
+							<h5 class="filter-container-head">Role Type</h5>
+							<ul style="list-style: none; padding-left: 10px;">
+								<li>
+									<input class="my-checkbox" type="checkbox" name="Job" id="job">
+									<label for="job">Full Time</label>
+								</li>
+								<li>
+									<input class="my-checkbox" type="checkbox" name="internship" id="internship">
+									<label for="internship">Part Time</label>
+								</li>
+								<li>
+									<input class="my-checkbox" type="checkbox" name="internship" id="internship">
+									<label for="internship">Project Based</label>
+								</li>
+							</ul>
+						</div>
+						<div class="filter-container">
+							<h5 class="filter-container-head">Job Type</h5>
+							<ul style="list-style: none; padding-left: 10px;">
+								<li>
+									<input class="my-checkbox" type="checkbox" name="Job" id="job">
+									<label for="job">Full Time Job</label>
+								</li>
+								<li>
+									<input class="my-checkbox" type="checkbox" name="internship" id="internship">
+									<label for="internship">Internship</label>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9 col-sm-12">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi aspernatur placeat soluta
+					dolorem sequi esse veniam perferendis sit illo voluptatem debitis omnis harum nam magni cupiditate
+					tempore quis, fugiat adipisci!
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="home.js"></script>
+</body>
+
+</html>

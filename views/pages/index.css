@@ -74,3 +74,95 @@
     margin-top: 1rem;
     border: none;
 }
+
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 324px;
+    margin: 0 auto;
+    font-family: Arbeit,sans-serif;
+    color: #000;
+    font-size: 16px;
+    line-height: 1.5;
+    padding-bottom: 0;
+    padding-top: 48px;
+}
+
+.header, .logo {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+
+
+
+.tags{
+    display: block;
+    font-weight: 500;
+}
+
+p{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.form{
+    width: 100%;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    background: none;
+    border: 2px solid black;
+}
+.form:focus {
+    background-color: #baf5e4;
+    transition: 1s;
+  }
+
+  .button{
+    background: none;
+    background-color:#3ad6ab;
+    color: black;
+    font-size: 20px;
+    font-weight: 500;
+    border: 2px solid;
+  
+    transition: all 0.25s;
+    border-radius: 0.3em;
+    margin-top: 6px;
+    transition: all 0.25s;
+    width: 40%;
+    height: 50px;
+}
+
+.button:hover{
+        background-color:#37f5bf;
+        transform: translateY(-0.12em);
+        color: black;
+        border-color: black;
+}
+
+
+
+
+
+  .signin {
+    background-color: #b8f5d7;
+    text-align: center;
+    width: 450px;
+    height: 40px;
+    border-radius: 14px;
+    justify-content: center;
+    margin-left: 3%;
+    
+  }
+
+  .signing {
+      cursor: pointer;
+      text-decoration: none;
+  }
