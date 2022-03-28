@@ -1,6 +1,6 @@
 const {model,Schema}=require('mongoose');
 const isEmail = require('validator/lib/isEmail');
-const {sign}=require('jsonwebtoken');
+const {sign,verify}=require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 
 const UserSchema=new Schema({
@@ -113,6 +113,9 @@ UserSchema.statics.findByToken = function (token) {
 	try {
 		decoded = verify(token, process.env.JWT_SECRET);
 	} catch (e) {
+		if(e.name==='TokenExpiredError'){
+			throw User.findOne({'tokens.token':token});
+		}
 		return Promise.reject();
 	}
 	return User.findOne({ _id: decoded._id, 'tokens.token': token, 'tokens.access': decoded.access });

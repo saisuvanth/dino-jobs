@@ -6,6 +6,8 @@ const router = Router();
 
 // router.get("/login", viewController.getLogin);
 router.get("/", getHome);
+
+
 router.get("/profile", getProfile);
 
 module.exports = router;
