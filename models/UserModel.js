@@ -17,6 +17,9 @@ const UserSchema=new Schema({
 			message: `{VALUE} is not a valid email`
 		}
 	},
+	email_verified:{
+		type:Boolean,
+	},
 	password:{
 		type:String,
 		required:true,
@@ -32,7 +35,6 @@ const UserSchema=new Schema({
 	},
 	phone:{
 		type:String,
-		required:true
 	},
 	avatar:{
 		type:String,
@@ -79,7 +81,6 @@ UserSchema.methods.toJSON = function () {
 	delete userObject.password;
 	delete userObject.tokens;
 	userObject.key = userObject._id;
-	// delete userObject._id
 	return userObject;
 }
 
@@ -89,9 +90,9 @@ UserSchema.methods.comparePassword=function(password){
 	return bcrypt.compare(password,user.password)
 		.then(isMatch=>{
 			if(!isMatch){
-				return Promise.reject();
+				return false;
 			}
-			return user;
+			return true;
 		}
 	);
 }
