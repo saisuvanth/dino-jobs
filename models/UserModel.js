@@ -90,9 +90,9 @@ UserSchema.methods.comparePassword=function(password){
 	return bcrypt.compare(password,user.password)
 		.then(isMatch=>{
 			if(!isMatch){
-				return false;
+				return Promise.reject();
 			}
-			return true;
+			return user;
 		}
 	);
 }

@@ -1,0 +1,36 @@
+/* Global stylings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #02564b;
+}
+
+a:hover {
+  color: #03a791;
+  transition: 0.45s ease-in-out all;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.form-check-input[type="checkbox"]:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+.form-check-input[type="checkbox"]:checked {
+  background-color: #018673;
+  transition: 0.3s ease-in-out all;
+}
+
+.form-check-input[type="checkbox"] {
+  background-color: #eefffd;
+  transition: 0.3s ease-in-out all;
+}
