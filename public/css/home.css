@@ -1,7 +1,7 @@
 .main {
   min-height: 100vh;
-  padding: 4rem 0px;
-  padding-left: 3rem;
+  padding-top: 4rem;
+  padding-left: 4rem;
 }
 
 .form-container {
@@ -21,7 +21,7 @@
 .filter-container {
   display: flex;
   flex-direction: column;
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
   font-family: "Times New Roman", Times, serif;
 }
 
