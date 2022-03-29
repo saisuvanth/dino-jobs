@@ -47,12 +47,12 @@
     <nav class="main-nav">
       <ul>
         <li class="active">
-          <a href="#" class="has-subnav">
+          <a href="home" class="has-subnav">
             <i style="height: fit-content" class="fa fa-home fa-custom"></i>
           </a>
         </li>
         <li>
-          <a href="#" class="has-subnav">
+          <a href="profile" class="has-subnav">
             <i style="height: fit-content" class="fa fa-user fa-custom"></i>
           </a>
         </li>
@@ -235,80 +235,15 @@
               </div>
             </div>
           </div>
-          <div class="col-md-10 col-sm-12 p-3">
+          <div class="col-md-9 col-sm-12 p-3">
             <div class="p-0 pb-2 mb-4 border-bottom border-2 border-light">
-              <h3>Recommended Jobs</h3>
+              <h3 class="px-4">Recommended Jobs</h3>
             </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-4 col-md-12 col-sm-12">
-                  <!-- Create a div to display job with apply and  contacts button-->
-                  <div class="job-card">
-                    <div class="d-flex w-100 p-1 align-content-center">
-                      <div class="img-wrapper m-1">
-                        <img
-                          src="https://static.boredpanda.com/blog/wp-content/uploads/2011/10/pod0042-apple-logo-steve-jobs-silhouette.jpg"
-                          alt="Avatar"
-                        />
-                      </div>
-                      <div class="job-details">
-                        <h5 class="p-0 m-0">Apple Inc.</h5>
-                        <p class="p-0 m-0">
-                          <i class="fas fa-map-marker-alt p-0"></i>
-                          <span> New York, NY </span>
-                        </p>
-                      </div>
-                      <div class="empty-el"></div>
-                      <div class="job-date">
-                        <p class="p-0 m-0">2 days ago</p>
-                      </div>
-                    </div>
-                    <div class="d-flex w-100 p-1 align-content-center">
-                      <h2 class="job-title">UX Designer</h2>
-                      <div class="empty-el"></div>
-                      <div class="job-date">
-                        <p class="p-0 m-0">$50000 - $70000</p>
-                      </div>
-                    </div>
-                    <div
-                      class="d-flex w-100 p-1 align-content-center flex-wrap"
-                    >
-                      <!-- create bootstrap badges -->
-                      <div class="badge-wrapper">
-                        <div class="badge badge-pill job-badge">Full Time</div>
-                      </div>
-                      <div class="badge-wrapper">
-                        <div class="badge badge-pill job-badge">Internship</div>
-                      </div>
-                      <div class="badge-wrapper">
-                        <div class="badge badge-pill job-badge">Part Time</div>
-                      </div>
-                    </div>
-
-                    <div
-                      class="d-flex w-100 p-1 align-content-center flex-wrap"
-                    >
-                      <div class="job-description">
-                        <p class="p-1 m-0">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Sed euismod, ipsum eget sagittis consequat, nisi
-                          purus ultrices nunc, euismod aliquam nisl nunc eget
-                          libero.
-                        </p>
-                      </div>
-                    </div>
-                    <div
-                      class="d-flex w-100 p-1 align-content-center flex-wrap"
-                    >
-                      <div class="job-buttons">
-                        <button class="job-apply">Apply</button>
-                      </div>
-                      <div class="job-buttons">
-                        <button class="job-contacts">Contacts</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="container fluid">
+              <div class="row fluid">
+                <% for (let i = 1; i < 36; i++) { %> <%-
+                include('../partials/JobCard.ejs', {job: jobs[i.toString()], index: i.toString()}) %>
+                <% } %>
               </div>
             </div>
           </div>

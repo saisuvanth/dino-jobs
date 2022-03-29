@@ -100,7 +100,7 @@ UserSchema.methods.comparePassword=function(password){
 UserSchema.methods.generateToken = function () {
 	const user = this;
 	const access = user.type;
-	const token = sign({_id:user._id.toHexString(),access},process.env.JWT_SECRET,{expiresIn:'1d',algorithm:'RS256'}).toString();
+	const token = sign({_id:user._id.toHexString(),access},process.env.JWT_SECRET,{expiresIn:'1d'}).toString();
 	user.tokens.push({access,token});
 	return user.save().then(()=>{
 		return token;
@@ -130,20 +130,21 @@ UserSchema.methods.removeToken=function(token){
 	});
 }
 
-UserSchema.pre('save', function (next) {
-	let user = this;
-	console.log(user);
-	if (user.isModified('password')) {
-		bcrypt.genSalt(10).then((salt, err) => {
-			if (err) throw err;
-			bcrypt.hash(user.password, salt, (er, hash) => {
-				if (er) throw er;
-				user.password = hash;
-				next();
-			});
-		});
-	} else
-		next();
-})
+// UserSchema.pre('save', function (next) {
+// 	let user = this;
+// 	console.log(user.isModified('password'));
+// 	if (user.isModified('password')) {
+// 		bcrypt.genSalt(10).then((salt, err) => {
+// 			if (err) throw err;
+// 			bcrypt.hash(user.password, salt, (er, hash) => {
+// 				if (er) throw er;
+// 				user.password = hash;
+// 				console.log(next);
+// 				return next();
+// 			});
+// 		});
+// 	} else
+// 		return next();
+// })
 
 module.exports=model('User',UserSchema);

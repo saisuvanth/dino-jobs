@@ -20,3 +20,5 @@ const getLogin=(req,res,next)=>{
 		res.redirect('/');
 	}
 }
+
+module.exports={getLogin}

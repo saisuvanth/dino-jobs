@@ -17,14 +17,14 @@ router.post('/login',(req,res,next)=>{
 	})
 })
 
-router.post('/register',(req,res,next)=>{
+router.post('/register',async (req,res,next)=>{
 	console.log(req.body);
 	const {email,password,full_name}=req.body;
-	signup({email,password,full_name,email_verified:false});
+	await signup({email,password,full_name,email_verified:false},res);
 })
 
-router.post('/verify/',(req,res,next)=>{
-	const token=req.query.token;
+router.get('/verify/:token',(req,res,next)=>{
+	const token=req.params.token;
 	if(verifyEmail(token)){
 		res.send('Email verified');
 	}else{

@@ -48,19 +48,10 @@
   display: none;
 }
 
-@keyframes checked {
-  0% {
-    tranform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.05);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
+/* input[type="checkbox"]:hover {
+  cursor: pointer;
+  border: 1px green;
+} */
 
 @media screen and (max-width: 768px) {
   .main {
@@ -96,27 +87,29 @@
   height: 100%;
   border-radius: 1rem;
   background-color: #f6fbf6;
-  margin-bottom: 1rem;
   padding: 1rem;
   box-shadow: 0px 0px 20px 0px rgba(218, 255, 209, 0.26);
 }
 
 .img-wrapper {
+  display: flex;
   width: 64px;
   height: 64px;
-  border-radius: 32px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 1px solid #2f2f2f;
+  /* border: 1px solid #2f2f2f; */
   display: flex;
   justify-content: center;
   align-items: center;
+  object-fit: contain;
 }
 
 .img-wrapper img {
-  min-width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  position: relative;
+  width: 100%;
+  /* aspect-ratio: 1; */
+  height: 100%;
+  overflow: clip;
+  /* position: relative; */
 }
 
 .job-details {
@@ -138,14 +131,16 @@
 }
 
 .job-title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #2f2f2f;
-  padding: 0.5rem;
+  padding: 0rem;
+  margin: 0;
 }
 
 .badge-wrapper {
-  padding: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  padding-left: 0;
 }
 
 .job-badge {
@@ -162,11 +157,12 @@
   color: #f5fbf5;
   border: 2px solid #39a372;
   border-radius: 1rem;
-  padding: 0.6rem 1.6rem;
+  padding: 0.5rem 1.6rem;
   font-size: 1.3rem;
   font-weight: 600;
   cursor: pointer;
   margin: 0.4rem 0.6rem;
+  margin-left: 0;
   transition: all 0.2s ease-in-out;
 }
 
@@ -182,7 +178,7 @@
   color: #2f2f2f;
   border: 2px solid #39a372;
   border-radius: 1rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1.2rem;
   font-size: 1.3rem;
   font-weight: 600;
   cursor: pointer;
@@ -195,4 +191,15 @@
   color: #f5fbf5;
   border: 2px solid #2f8f6f;
   transition: all 0.2s ease-in-out;
+}
+
+.text-area-box{
+  height: 90%;
+  width: 90%;
+  margin: auto;
+}
+
+.form-box{
+  background: none;
+  border: 2px solid;
 }

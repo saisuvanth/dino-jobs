@@ -1,13 +1,13 @@
-const {createConnection}=require('mongoose');
+const {connect}=require('mongoose');
 
-createConnection(process.env.MONGO_URI,{
+connect(process.env.MONGO_URI,{
 	useNewUrlParser:true,
 	useUnifiedTopology:true,
-	useCreateIndex:true
-}, ()=>{
+}).then(()=>{
 	console.log('Database connected');
 });
 
+setTimeout(() => console.log("urmom"), 5000);
 
 module.exports={
 	User:require('./UserModel'),
@@ -16,4 +16,4 @@ module.exports={
 	WorkExperience:require('./WorkExperienceModel'),
 	SocialProfile:require('./SocialProfileModel'),
 	Message:require('./MessageModel'),
-}
+}	

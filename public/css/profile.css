@@ -1,0 +1,58 @@
+.nav-link.active {
+  color: white !important;
+  background-color: #3bb78f !important;
+  background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%) !important;
+  border-radius: 8px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.nav-link {
+  color: #03a791 !important;
+  border-radius: 8px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-color: transparent !important;
+}
+
+.nav-link:hover {
+  border-color: #03a79178 !important;
+}
+
+.nav-item {
+  padding: 0 0.4rem;
+  padding-left: 0;
+}
+
+.nav-tabs {
+  /* border: none; */
+  border-color: #03a791;
+  border-width: 2px;
+}
+
+.save-changes {
+    background-color: #39a372;
+    color: #f5fbf5;
+    border: 2px solid #39a372;
+    border-radius: 8px;
+    padding: 0.4rem 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0.4rem 0.6rem;
+    margin-left: 0;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .save-changes:hover {
+    background-color: #2f8f6f;
+    color: #f5fbf5;
+    border: 2px solid #2f8f6f;
+    transition: all 0.2s ease-in-out;
+  }
+
+.image-add {
+  border-radius: 50%;
+  float: right;
+  margin-right: 2rem;
+}
