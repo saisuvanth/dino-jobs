@@ -1,9 +1,11 @@
+const data=require('../h.json');
+
 const getLanding=function(req,res,next){
   res.status(200).render("pages/index",{title:"Landing"});
 }
 
 const getHome = function (req, res, next) {
-  res.status(200).render("pages/home", { title: "Home" });
+  res.status(200).render("pages/home", { jobs: data });
 };
 
 

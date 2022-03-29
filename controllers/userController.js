@@ -2,9 +2,9 @@ const {User}=require('../models');
 const nodemailer=require('nodemailer');
 
 const mailServer=nodemailer.createTransport({
-	service:'yahoo',
+	service:'gmail',
 	auth:{
-		user:'rookievesper@yahoo.com',
+		user:'rookievesper@gmail.com',
 		pass:'furrySimp'
 	}
 });
@@ -24,27 +24,33 @@ function login({username,password}){
 	});
 }
 
-function signup(user){
+async function signup(user,res){
 	const new_user=new User(user);
 	return new_user.save()
-		.then(user=>{
+		.then(async user=>{
 			console.log(user);
-			sendEmail(user);
+			await sendEmail(user);
+			res.send(true);
 		})
-		.catch(err=>console.log(err));
+		.catch(err=>{
+			console.log(err);
+			res.send(false);
+		});
 }
 
 
-function sendEmail(req,res){
-	html='<h2>Please click the link below to verify your email</h2>'+'<a href="http://localhost:3000/verify/'+req.body.token+'">Verify Here</a>';
-	User.findOne({username:req.body.email}).then(user=>{
+async function sendEmail(user){
+	console.log(user.email);
+	await User.findOne({email:user.email}).then(async user=>{
 		if(!user){
 			throw new Error('User not found');
 		}
-		const token=user.generateToken();
+		const token= await user.generateToken();
+		console.log(token)
+		html='<h2>Please click the link below to verify your email</h2>'+'<a href="http://localhost:3000/verify/'+token+'">Verify Here</a>';
 		const mailOptions = {
-			from: 'rookievesper@yahoo.com',
-			to : req.body.email,
+			from: 'rookievesper@gmail.com',
+			to : user.email,
 			subject:'Please confirm your Email account',
 			html:html
 		}
@@ -58,11 +64,12 @@ function sendEmail(req,res){
 	})
 }
 
-function verifyEmail(req){
-	User.findByToken(req.query.token).then(user=>{
+function verifyEmail(token){
+	User.findByToken(token).then(user=>{
 		if(!user){
 			throw new Error('User not found');
 		}
+		console.log(user);
 		user.email_verified=true;
 		user.save();
 		return true;

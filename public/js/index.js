@@ -26,7 +26,7 @@ function displayLogin() {
 
 //Validating the form
 async function handleSubmit(event) {
-  // event.preventDefault();
+  event.preventDefault();
   const form = event.target;
   const data = new FormData(form);
   const password = data.get("password");
@@ -46,6 +46,15 @@ async function handleSubmit(event) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    });
+      body: JSON.stringify({
+        full_name: data.get("fullName"),
+        email: data.get("emailId"),
+        password: data.get("password"),
+        is_checked: data.get("signedInCheck")
+      }),
+    }).then(res => res.json()).then(data => {
+      if(data){
+        window.location.href = "http://localhost:3000/home";
+      }
+    })
 }

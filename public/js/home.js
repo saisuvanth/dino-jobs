@@ -12,13 +12,11 @@ window.addEventListener('load',()=>{
 });
 const filterDiv=document.querySelector('#filter-parent');
 const filterBut=document.querySelector('#filter-close-button');
-// const filterHead=document.querySelector('#mycol-1');
 
 function makeOffCanvas(){
 	filterDiv.id='offcanvasExample';
 	filterDiv.className='offcanvas offcanvas-start';
 	filterBut.style.display='block';
-	// filterHead.classList.add('offcanvas-header');
 }
 
 function removeOffCanvas(){
@@ -28,5 +26,4 @@ function removeOffCanvas(){
 	filterDiv.ariaHidden=false;
 	filterDiv.style.visibility='visible';
 	filterBut.style.display='none';
-	// filterHead.classList.remove('offcanvas-header');
 }

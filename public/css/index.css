@@ -34,9 +34,22 @@
 }
 
 .landing {
-  width: 90%;
+  width: 85%;
   animation: bottomToTop 3s ease-in-out;
   transition: all 0.5s ease-in-out;
+}
+
+.smol-form {
+  width: 75%;
+}
+
+@media screen and (max-width: 768px) {
+  .landing {
+    width: 100%;
+  }
+  .smol-form {
+    width: 95%;
+  }
 }
 
 .landing h1 {

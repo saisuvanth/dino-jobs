@@ -1,0 +1,6 @@
+{
+    "instantMongo": {
+      "connections": [{ "name": "New Database Connection", "uri": "mongodb+srv://whiteDevil:suvanth%4096@cluster0.1t2vy.mongodb.net/dino-jobs?retryWrites=true&w=majority" }]
+    }
+  }
+  
