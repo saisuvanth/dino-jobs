@@ -12,6 +12,11 @@ const peerServer = ExpressPeerServer(server, { debug: true });
 const viewRouter = require("./Routes/viewRouter");
 const userRouter = require("./Routes/userRouter");
 const interviewRouter = require("./Routes/interviewRouter");
+const { initSockets } = require("./controllers/interviewHandler");
+initSockets(io);
+io.on('connection', () => {
+    console.log("connected")
+})
 
 app.use(express.json());
 app.set("view engine", "ejs");
