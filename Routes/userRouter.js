@@ -5,16 +5,10 @@ const router=Router();
 router.post('/login',(req,res,next)=>{
 	login(req).then(token=>{
 		if(token){
-<<<<<<< HEAD
 			// res.cookie('login',token).redirect('/home');
 			res.cookie('login', token).status(200).json({message:'Login Successful'});
 		}else{
 			res.status(401).json({message:'Unauthorised'});
-=======
-			res.cookie('login',token).redirect('/home');
-		}else{
-			res.redirect('/');
->>>>>>> 5a6327ebe716acda3a53ab0421bd095f29053864
 		}
 	})
 })
