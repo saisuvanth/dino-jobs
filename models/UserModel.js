@@ -130,21 +130,20 @@ UserSchema.methods.removeToken=function(token){
 	});
 }
 
-// UserSchema.pre('save', function (next) {
-// 	let user = this;
-// 	console.log(user.isModified('password'));
-// 	if (user.isModified('password')) {
-// 		bcrypt.genSalt(10).then((salt, err) => {
-// 			if (err) throw err;
-// 			bcrypt.hash(user.password, salt, (er, hash) => {
-// 				if (er) throw er;
-// 				user.password = hash;
-// 				console.log(next);
-// 				return next();
-// 			});
-// 		});
-// 	} else
-// 		return next();
-// })
+UserSchema.pre('save', function (next) {
+	let user = this;
+	console.log(user.isModified('password'));
+	if (user.isModified('password')) {
+		bcrypt.genSalt(10).then((salt, err) => {
+			if (err) throw err;
+			bcrypt.hash(user.password, salt, (er, hash) => {
+				if (er) throw er;
+				user.password = hash;
+				return next();
+			});
+		});
+	} else
+		return next();
+})
 
 module.exports=model('User',UserSchema);

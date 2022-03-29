@@ -10,16 +10,25 @@ const mailServer=nodemailer.createTransport({
 });
 
 
-function login({username,password}){
-	return User.findOne({username}).then(user=>{
+function login(req){
+	const {email,password,is_checked}=req.body;
+	console.log(req.body);
+	return User.findOne({email}).then(user=>{
 		if(!user){
 			throw new Error('User not found');
 		}
 		return user.comparePassword(password);
 	}).then(user=>{
-		return {...user,token:user.generateToken()};
+		console.log(user);
+		if(user){
+			return user.generateToken().then(token=>{
+				console.log('25'+token);
+				return token;
+			});
+		}
+		else return false;
 	}).catch(err=>{
-		console.log(err);
+		console.log('31'+err);
 		return false;
 	});
 }
@@ -30,9 +39,7 @@ async function signup(user,res){
 		.then(async user=>{
 			console.log(user);
 			await sendEmail(user);
-			res.send(true);
-		})
-		.catch(err=>{
+		}).catch(err=>{
 			console.log(err);
 			res.send(false);
 		});
@@ -64,18 +71,23 @@ async function sendEmail(user){
 	})
 }
 
-function verifyEmail(token){
-	User.findByToken(token).then(user=>{
+async function verifyEmail(token){
+	return User.findByToken(token).then(user=>{
 		if(!user){
 			throw new Error('User not found');
 		}
 		console.log(user);
 		user.email_verified=true;
-		user.save();
-		return true;
-	}).catch(err=>{
-		return false;
-	})
+		user.save()
+		.then(async user=>{
+			console.log(user);
+			return true;
+		})
+		.catch(err=>{
+			console.log(err);
+			return false;
+		});
+	});
 }
 
 module.exports={login,signup,verifyEmail};
