@@ -1,9 +1,10 @@
-const path = require("path");
 require("dotenv").config();
-const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const morgan = require("morgan");
 const cookie = require("cookie-parser");
+const express = require("express");
+const { v4: uuidv4 } = require("uuid");
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
@@ -32,4 +33,4 @@ app.use("/", viewRouter);
 app.use("/", userRouter);
 app.use("/", interviewRouter);
 
-module.exports = app;
+module.exports = server;

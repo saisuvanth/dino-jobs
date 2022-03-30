@@ -10,6 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/navbar.css" />
     <link href="css/landing.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/global.css" />
     <link
@@ -33,11 +34,14 @@
     <title>Dino-JOBS</title>
   </head>
   <body class="w-100">
+    <div id="alert-div"></div>
     <div class="container-fluid">
       <div class="row h-100">
         <div class="col-md-5">
           <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-            <a class="navbar-brand" href="">Dino-Jobs</a>
+            <a class="navbar-brand" style="margin: 0px" href="">
+              <img class="logo" src="/assets/dino-logo.png" alt="" />
+            </a>
             <button
               class="navbar-toggler"
               type="button"
@@ -49,19 +53,16 @@
             >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div
+              class="collapse navbar-collapse flex-row-reverse"
+              id="navbarNav"
+            >
               <ul class="navbar-nav">
                 <li class="nav-item active px-2">
                   <a class="nav-link" href="">Home</a>
                 </li>
                 <li class="nav-item px-2">
                   <a class="nav-link" href="">About</a>
-                </li>
-                <li class="nav-item px-2">
-                  <a class="nav-link" href="">Pricing</a>
-                </li>
-                <li class="nav-item px-2">
-                  <a class="nav-link disabled" href="">Disabled</a>
                 </li>
               </ul>
             </div>
@@ -79,13 +80,13 @@
                 class="card p-4"
                 style="border-radius: 16px; box-shadow: 10px"
               >
-                <h2 class="mb-4 pb-3 login-header">
+                <h2 class="mb-4 pb-2 login-header">
                   <a onclick="displayHome()" href="#"
                     ><i class="fas fa-angle-left"></i
                   ></a>
                   Login
                 </h2>
-                <form class="p-3 w-90" onsubmit="handleSubmit(event,'login')">
+                <form class="w-90" onsubmit="handleSubmit(event,'login')">
                   <div class="form-group mb-3">
                     <label class="pb-1" for="emailId">Email address</label>
                     <div class="input-group mb-1">
@@ -157,7 +158,7 @@
                   </div>
                   <button type="submit" class="btn-grad">Submit</button>
                 </form>
-                <div class="text-center">
+                <div class="text-start py-2">
                   Not on Dino-Jobs yet?<a href="#" onclick="displaySignup()">
                     Register Here</a
                   >
@@ -169,17 +170,13 @@
                 class="card p-4"
                 style="border-radius: 16px; box-shadow: 10px"
               >
-                <h2 class="mb-4 pb-3 login-header">
+                <h2 class="mb-2 login-header">
                   <a onclick="displayHome()" href="#"
                     ><i class="fas fa-angle-left"></i
                   ></a>
                   Register
                 </h2>
-<<<<<<< HEAD
-                <form class="p-3" onsubmit="handleSubmit(event,'')">
-=======
-                <form class="p-3" onsubmit="handleSubmit(event,'register')">
->>>>>>> 5a6327ebe716acda3a53ab0421bd095f29053864
+                <form class="" onsubmit="handleSubmit(event,'')">
                   <div class="form-group mb-3">
                     <label class="pb-1" for="fullName">Full Name</label>
                     <div class="input-group mb-1">
@@ -314,7 +311,7 @@
                   </div>
                   <button type="submit" class="btn-grad">Submit</button>
                 </form>
-                <div class="text-center">
+                <div class="text-start py-2">
                   Already registered?
                   <a href="#" onclick="displayLogin()">Login Here</a>
                 </div>
@@ -322,7 +319,9 @@
             </div>
           </div>
         </div>
-        <div class="col-md-7 d-flex justify-content-start align-items-center">
+        <div
+          class="d-sm-none d-md-flex col-md-7 d-flex justify-content-start align-items-center"
+        >
           <div class="image-holder">
             <%- include('../partials/LandingImage.ejs') %>
           </div>

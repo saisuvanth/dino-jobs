@@ -10,7 +10,7 @@ currUser.initiated = false;
 socket.on("connect", () => {
   currUser.userId = socket.id;
   document.getElementById("userIdHeader").innerText =
-    currUser.userId + "(connecting)";
+    currUser.userId + " (Connecting)";
   socket.emit("join-room", currUser.roomId, socket.id);
 });
 
@@ -67,9 +67,9 @@ const initPeer = () => {
 
   currUser.peer.on("connect", () => {
     document.getElementById("userIdHeader").innerText =
-      currUser.userId + "(Connected)";
+      currUser.userId + "  (Connected)";
     currUser.peer.send("whatever" + Math.random());
-    document.querySelector("#editor").addEventListener("input", (e) => {
+    document.querySelector("#editor-code").addEventListener("input", (e) => {
       e.preventDefault();
       let message = editor.getValue();
       console.log(message);
@@ -88,7 +88,7 @@ const initPeer = () => {
     let recData = JSON.parse(data);
     console.log(recData);
     if (recData.type == "code") {
-      let oldCursor = editor.getCursorPosition()
+      let oldCursor = editor.getCursorPosition();
       editor.setValue(recData.data);
       editor.moveCursorToPosition(oldCursor);
     }

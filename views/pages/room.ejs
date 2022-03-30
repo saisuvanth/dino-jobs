@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>videoChatApp</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
-  <script src="/simplepeer.min.js"></script>
+  <script src="/js/simplepeer.min.js"></script>
   <script>
     const ROOM_ID = "<%= roomId %>";
   </script>
@@ -23,13 +23,15 @@
   <div class="main">
     <div class="main__left">
       <div class="code-editor">
-        <div id="editor"></div>
+        <div class="editor-wrapper">
+            <div id="editor-code" class="editor"></div>
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js"
           integrity="sha512-6ts6Fu561/yzWvD6uwQp3XVYwiWNpWnZ0hdeQrETqtnQiGjTfOS06W76aUDnq51hl1SxXtJaqy7IsZ3oP/uZEg=="
           crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-          const editor = ace.edit("editor");
-          editor.setTheme("ace/theme/monokai");
+          const editor = ace.edit("editor-code");
+          editor.setTheme("ace/theme/one_dark");
           editor.session.setMode("ace/mode/javascript");
         </script>
       </div>
@@ -41,15 +43,15 @@
       <div class="options">
         <div class="options__left">
           <button onclick="startVideo()" id="stopVideo" class="options__button">
-            <i class="fa fa-video-camera"></i>
+            <i class="fa fa-video-camera int-icon"></i>
           </button>
           <button onclick="toggleMute()" id="muteButton" class="options__button">
-            <i class="fa fa-microphone"></i>
+            <i class="fa fa-microphone int-icon"></i>
           </button>
         </div>
         <div class="options__right">
           <div id="inviteButton" class="options__button">
-            <i class="fas fa-user-plus"></i>
+            <i class="fas fa-user-plus int-icon"></i>
           </div>
         </div>
       </div>
@@ -64,7 +66,7 @@
         <div class="main__message_container">
           <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
           <button id="send" class="options__button" type="submit">
-            <i class="fa fa-plus" aria-hidden="true"></i>
+            <i class="fa fa-plus int-icon" aria-hidden="true" ></i>
           </button>
           </button>
         </div>
@@ -72,6 +74,6 @@
     </div>
   </div>
 </body>
-<script src="/script.js"></script>
+<script src="/js/script.js"></script>
 
 </html>

@@ -38,10 +38,11 @@ async function signup(user,res){
 	return new_user.save()
 		.then(async user=>{
 			console.log(user);
+			res.status(200).json({result:"Mail Sent"});
 			await sendEmail(user);
 		}).catch(err=>{
 			console.log(err);
-			res.send(false);
+			res.send(400).json({result:''});
 		});
 }
 
@@ -78,7 +79,7 @@ async function verifyEmail(token){
 		}
 		console.log(user);
 		user.email_verified=true;
-		user.save()
+		return user.save()
 		.then(async user=>{
 			console.log(user);
 			return true;
