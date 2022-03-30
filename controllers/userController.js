@@ -39,9 +39,7 @@ async function signup(user,res){
 		.then(async user=>{
 			console.log(user);
 			await sendEmail(user);
-			res.send(true);
-		})
-		.catch(err=>{
+		}).catch(err=>{
 			console.log(err);
 			res.send(false);
 		});
@@ -73,18 +71,23 @@ async function sendEmail(user){
 	})
 }
 
-function verifyEmail(token){
-	User.findByToken(token).then(user=>{
+async function verifyEmail(token){
+	return User.findByToken(token).then(user=>{
 		if(!user){
 			throw new Error('User not found');
 		}
 		console.log(user);
 		user.email_verified=true;
-		user.save();
-		return true;
-	}).catch(err=>{
-		return false;
-	})
+		user.save()
+		.then(async user=>{
+			console.log(user);
+			return true;
+		})
+		.catch(err=>{
+			console.log(err);
+			return false;
+		});
+	});
 }
 
 module.exports={login,signup,verifyEmail};
