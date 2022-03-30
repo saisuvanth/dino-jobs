@@ -16,7 +16,7 @@
 
 .main-nav {
   background: #e2fdf0;
-  border-right: 1px solid #e5e5e5;
+  /* border-right: 1px solid #e5e5e5; */
   position: fixed;
   z-index: 1000;
 }
@@ -45,7 +45,7 @@ nav li {
   padding: 0;
 }
 .main-nav li:hover > a,
-nav.main-nav li.active > a {
+nav.main-nav .active {
   color: green;
 }
 

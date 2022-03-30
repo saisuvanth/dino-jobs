@@ -80,10 +80,10 @@
                                     alt="Avatar" />
                             </div>
                             <div class="job-details">
-                                <h5 class="p-0 m-0">CogniSaaS</h5>
+                                <h5 class="p-0 m-0"><%= job.name.slice(0,25) + (job.name.length > 25 ? "...": "") %></h5>
                                 <div class="p-0 m-0">
                                     <i class="fas fa-map-marker-alt p-0"></i>
-                                    <span>Work From Home</span>
+                                    <span><%= job.location %></span>
                                     <div class="empty-el"></div>
                                     <div class="job-date">
                                         <p class="p-0 m-0">2 days ago</p>
@@ -92,45 +92,41 @@
                             </div>
                         </div>
                         <div class="d-flex w-100 p-1 align-content-center">
-                            <h2 class="job-title" style="word-wrap: break-word">Full Stack Engineer</h2>
+                            <h2 class="job-title" style="word-wrap: break-word"><%= job.role %></h2>
                         </div>
                         <div class="d-flex w-100 p-1 align-content-center">
                             <div class="job-date">
-                                <p class="p-0 m-0">1.2L 2.4L No equity</p>
+                                <p class="p-0 m-0"><%= job.salary %></p>
                             </div>
                         </div>
                         <div class="d-flex w-100 p-1 align-content-center flex-wrap">
-
-                            <div class="badge-wrapper">
-                                <div class="badge badge-pill job-badge">Part Time</div>
-                            </div>
-
-                            <div class="badge-wrapper">
-                                <div class="badge badge-pill job-badge">Internship</div>
-                            </div>
-
-                            <div class="badge-wrapper">
-                                <div class="badge badge-pill job-badge">Remote</div>
-                            </div>
-
-                            <div class="badge-wrapper">
-                                <div class="badge badge-pill job-badge">HTML</div>
-                            </div>
-
-                            <div class="badge-wrapper">
-                                <div class="badge badge-pill job-badge">PARTICLE.js</div>
-                            </div>
-
-                            <div class="badge-wrapper">
-                                <div class="badge badge-pill job-badge">EXPRESS.js</div>
-                            </div>
-
+                          <!-- create bootstrap badges -->
+                          <% if (job.type === 'Full Time') { %>
+                          <div class="badge-wrapper">
+                            <div class="badge badge-pill job-badge">Full Time</div>
+                          </div>
+                          <% } else { %>
+                          <div class="badge-wrapper">
+                            <div class="badge badge-pill job-badge">Part Time</div>
+                          </div>
+                          <% } %> <% if (job.type === 'Internship') { %>
+                          <div class="badge-wrapper">
+                            <div class="badge badge-pill job-badge">Internship</div>
+                          </div>
+                          <% } %> <% if (job.remote === true) { %>
+                          <div class="badge-wrapper">
+                            <div class="badge badge-pill job-badge">Remote</div>
+                          </div>
+                          <% } %> <% for (let i = 0; i < job.req_skills.length; i++) { %>
+                          <div class="badge-wrapper">
+                            <div class="badge badge-pill job-badge"><%= job.req_skills[i] %></div>
+                          </div>
+                          <% } %>
                         </div>
-
                         <div class="d-flex w-100 p-1 align-content-center flex-wrap">
                             <div class="job-description">
                                 <p class="p-1 m-0" style="word-wrap: break-word">
-                                    Enabling customer-centric value delivery in enterprise SaaS
+                                  <%= job.description %>
                                 </p>
                             </div>
                         </div>
@@ -141,7 +137,7 @@
                 </div>
 
                 <div class="form-group text-area-box">
-                    <label for="comment"><h5>Comment:</h5></label>
+                    <label for="comment"><h5>Cover Letter </h5></label>
                     <textarea class="form-control form-box" rows="4" id="comment"></textarea>
                   </div>
 
