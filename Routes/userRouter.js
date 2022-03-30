@@ -8,7 +8,7 @@ router.post('/login',(req,res,next)=>{
 			// res.cookie('login',token).redirect('/home');
 			res.cookie('login', token).status(200).json({message:'Login Successful'});
 		}else{
-			res.status(401).json({message:'Unauthorised'});
+			res.status(401).json({message:'Unauthorized'});
 		}
 	})
 })

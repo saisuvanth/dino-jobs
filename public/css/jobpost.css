@@ -1,0 +1,146 @@
+body {
+  background-color: #b8f5d7;
+}
+
+.wrapper {
+  margin-left: 25%;
+  margin-top: 1%;
+  width: 700px;
+  height: 680px;
+  background-color: #292928;
+  border-radius: 10px;
+}
+
+
+.right-sec {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.image-holder {
+  /* position: absolute; */
+  z-index: 1;
+  width: 30%;
+}
+
+.image-holder svg {
+  width: 300%;
+}
+
+.right-card {
+  z-index: 0;
+  background-color: #b8f5d7;
+  height: 97%;
+  width: 100%;
+  margin-left: auto;
+  border-radius: 1rem;
+}
+/* ============================= */
+
+.left-sec {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.landing {
+  width: 85%;
+  animation: bottomToTop 3s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.smol-form {
+  width: 75%;
+}
+
+@media screen and (max-width: 768px) {
+  .landing {
+    width: 100%;
+  }
+  .smol-form {
+    width: 95%;
+  }
+}
+
+.landing h1 {
+  font-size: 4.2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 600;
+}
+
+.landing h2 {
+  font-size: 2.5rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
+.login-header {
+  border-bottom: 1px solid #757575;
+}
+
+/* #login {
+  display: none;
+} */
+
+.landing p {
+  font-size: 1.8rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  padding-top: 1rem;
+}
+
+button {
+  background-color: #b8f5d7;
+  border-radius: 24px;
+  padding: 0.3rem 1.3rem;
+  font-size: 1.1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
+  border: none;
+}
+
+.home-btn {
+  padding: 0.5rem 1.3rem;
+}
+
+.btn-grad {
+    color: #dfdede;
+}
+.btn-grad {
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: top; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+@keyframes bottomToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  25% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

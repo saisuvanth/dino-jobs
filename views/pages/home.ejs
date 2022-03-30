@@ -1,73 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/navbar.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Dino Jobs</title>
-    <style>
-      ::-webkit-scrollbar {
-        width: 5px;
-      }
-
-      ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey;
-        border-radius: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: gray;
-        border-radius: 10px;
-      }
-    </style>
-  </head>
+  <%- include('../partials/Header.ejs') %> 
 
   <body>
-    <nav class="main-nav">
-      <ul>
-        <li class="active">
-          <a href="home" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-home fa-custom"></i>
-          </a>
-        </li>
-        <li>
-          <a href="profile" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-user fa-custom"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-suitcase fa-custom"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-envelope fa-custom"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <%- include('../partials/Navbar.ejs') %> 
     <button
       id="filter-btn"
       class="btn btn-success"
@@ -84,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent" style="padding-left: 6rem;">
       <a class="navbar-brand" style="margin: 0px;" href=""> <img class="logo" src="/assets/dino-logo.png" alt=""> </a>
       <button
-        class="navbar-toggler"
+        class="navbar-toggler mx-4"
         type="button"
         data-toggle="collapse"
         data-target="#navbarNav"
@@ -94,7 +30,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
+      <div class="px-3 collapse navbar-collapse flex-row-reverse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active px-2">
             <a class="nav-link" href="">Home</a>

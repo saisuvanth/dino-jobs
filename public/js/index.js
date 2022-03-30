@@ -73,17 +73,17 @@ async function handleSubmit(event, flag) {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // if (data.result == "Mail Sent") {
-        //   //add bootstrap alert
-        //   let alert = document.createElement("div");
-        //   alert.classList.add("alert", "alert-success");
-        //   alert.innerText = "Verification mail sent";
-        //   document.getElementById("alert-div").appendChild(alert);
-        //   setTimeout(() => {
-        //     alert.remove();
-        //     window.location.href = "http://localhost:3000/";
-        //   }, 3000);
-        // }
+        if (data.result == "Mail Sent") {
+          //add bootstrap alert
+          let alert = document.createElement("div");
+          alert.classList.add("alert", "alert-warning");
+          alert.innerText = "Verification mail sent";
+          document.getElementById("alert-div").appendChild(alert);
+          setTimeout(() => {
+            alert.remove();
+            window.location.href = "http://localhost:3000/";
+          }, 3000);
+        }
       });
   }
 }

@@ -13,4 +13,9 @@ const getProfile = (req, res, next) => {
   res.status(200).render("pages/user/profile", { title: "Profile" });
 }
 
-module.exports = {getHome,getProfile,getLanding};
+const getJobPost = (req, res, next) => {
+  res.status(200).render("pages/user/jobpost", { title: "Job Posting" });
+}
+
+
+module.exports = {getHome,getProfile,getLanding,getJobPost};
