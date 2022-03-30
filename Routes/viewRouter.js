@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const {getHome,getProfile,getLanding} = require("../controllers/viewController");
-const {getLogin}=require('../middleware');
+const {getLogin,loginFlag}=require('../middleware');
 const router = Router();
 
 
-router.get("/", getLanding);
+router.get("/",loginFlag ,getLanding);
 
 router.get('/home',getLogin,getHome);
 

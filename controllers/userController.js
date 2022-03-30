@@ -10,16 +10,25 @@ const mailServer=nodemailer.createTransport({
 });
 
 
-function login({username,password}){
-	return User.findOne({username}).then(user=>{
+function login(req){
+	const {email,password,is_checked}=req.body;
+	console.log(req.body);
+	return User.findOne({email}).then(user=>{
 		if(!user){
 			throw new Error('User not found');
 		}
 		return user.comparePassword(password);
 	}).then(user=>{
-		return {...user,token:user.generateToken()};
+		console.log(user);
+		if(user){
+			return user.generateToken().then(token=>{
+				console.log('25'+token);
+				return token;
+			});
+		}
+		else return false;
 	}).catch(err=>{
-		console.log(err);
+		console.log('31'+err);
 		return false;
 	});
 }

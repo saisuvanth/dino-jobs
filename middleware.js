@@ -12,13 +12,22 @@ const getLogin=(req,res,next)=>{
 				throw new Error('User not found');
 			}
 		}).catch(err=>{
-			err.removeToken(token);
-			res.redirect('/');
+			err.removeToken(token).then(()=>{
+				res.clearCookie('login');
+				res.redirect('/');
+			}).catch(err=>console.log(err));
 		});
 	}else{
-		next();
 		res.redirect('/');
 	}
 }
+const loginFlag=(req,res,next)=>{
+	const cookie=req.cookies.login;
+	if(cookie){
+		res.redirect('/home');
+	}else{
+		next();
+	}
+}
 
-module.exports={getLogin}
+module.exports={getLogin,loginFlag}

@@ -25,11 +25,29 @@ function displayLogin() {
 }
 
 //Validating the form
-async function handleSubmit(event) {
+async function handleSubmit(event,flag) {
   event.preventDefault();
   const form = event.target;
   const data = new FormData(form);
   const password = data.get("password");
+  if(flag==='login'){
+    const res = await fetch("http://localhost:3001/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: data.get("emailId"),
+      password: data.get("password"),
+      is_checked: data.get("loginInCheck")
+    }),
+  });
+  if(res.status===200){
+    window.location.href = "http://localhost:3001/home";
+  }else{
+    location.reload();
+  }
+  }else{
   const confirmPassword = data.get("confirmPassword");
   if (password !== confirmPassword) {
     let passwords = document.getElementsByClassName("password-error");
@@ -57,4 +75,5 @@ async function handleSubmit(event) {
         window.location.href = "http://localhost:3000/home";
       }
     })
+  }
 }

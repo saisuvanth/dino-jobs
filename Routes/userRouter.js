@@ -3,16 +3,12 @@ const {login,signup,verifyEmail}=require('../controllers/userController');
 const router=Router();
 
 router.post('/login',(req,res,next)=>{
-	login(req.body).then(user=>{
-		if(user){
-			res.cookie('login',user.token,{
-				maxAge:1000*60*60*24,
-				httpOnly:true,
-				secure:true
-			});
-			res.redirect('/home');
+	login(req).then(token=>{
+		if(token){
+			// res.cookie('login',token).redirect('/home');
+			res.cookie('login', token).status(200).json({message:'Login Successful'});
 		}else{
-			res.redirect('/login');
+			res.status(401).json({message:'Unauthorised'});
 		}
 	})
 })

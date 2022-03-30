@@ -85,7 +85,7 @@
                   ></a>
                   Login
                 </h2>
-                <form class="p-3 w-90">
+                <form class="p-3 w-90" onsubmit="handleSubmit(event,'login')">
                   <div class="form-group mb-3">
                     <label class="pb-1" for="emailId">Email address</label>
                     <div class="input-group mb-1">
@@ -148,10 +148,10 @@
                     <input
                       type="checkbox"
                       class="form-check-input"
-                      id="signedInCheck"
-                      name="signedInCheck"
+                      id="loginInCheck"
+                      name="loginInCheck"
                     />
-                    <label class="form-check-label" for="signedInCheck"
+                    <label class="form-check-label" for="loginInCheck"
                       >Check me out</label
                     >
                   </div>
@@ -175,7 +175,7 @@
                   ></a>
                   Register
                 </h2>
-                <form class="p-3" onsubmit="handleSubmit(event)">
+                <form class="p-3" onsubmit="handleSubmit(event,'')">
                   <div class="form-group mb-3">
                     <label class="pb-1" for="fullName">Full Name</label>
                     <div class="input-group mb-1">
