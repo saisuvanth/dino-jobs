@@ -57,9 +57,11 @@
   .main {
     padding-left: 0rem;
   }
+
   #mycol-1 {
     padding-left: 1rem;
   }
+
   #filter-btn {
     display: block;
     position: fixed;
@@ -71,9 +73,11 @@
     border-radius: 5rem;
     background-color: rgb(197, 231, 197);
   }
+
   .filter-container {
     width: 200px;
   }
+
   #mycol-1 {
     width: fit-content;
   }
@@ -112,19 +116,23 @@
   overflow: clip;
   /* position: relative; */
 }
+
 @keyframes bottomToTop {
   0% {
     opacity: 0;
     transform: translateY(50px);
   }
+
   25% {
     opacity: 0.7;
     transform: translateY(0);
   }
+
   50% {
     opacity: 0.9;
     transform: translateY(0);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -212,24 +220,35 @@
   transition: all 0.2s ease-in-out;
 }
 
-.text-area-box{
+.text-area-box {
   height: 90%;
   width: 90%;
   margin: auto;
 }
 
-.form-box{
+.form-box {
   background: none;
   border: 2px solid;
 }
 
-.text-area-box{
+.text-area-box {
   height: 90%;
   width: 90%;
   margin: auto;
 }
 
-.form-box{
+.form-box {
   background: none;
   border: 2px solid;
+}
+
+.parent-row {
+  height: 100%;
+  position: absolute;
+}
+
+.scroll-row {
+  height: 100%;
+  width: 80%;
+  overflow-y: auto;
 }

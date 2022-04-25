@@ -1,94 +1,98 @@
-const {User}=require('../models');
-const nodemailer=require('nodemailer');
+const { User } = require('../models');
+const nodemailer = require('nodemailer');
 
-const mailServer=nodemailer.createTransport({
-	service:'gmail',
-	auth:{
-		user:'rookievesper@gmail.com',
-		pass:'furrySimp'
+const mailServer = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'rookievesper@gmail.com',
+		pass: 'furrysimp'
 	}
 });
 
 
-function login(req){
-	const {email,password,is_checked}=req.body;
+function login(req) {
+	const { email, password, is_checked } = req.body;
 	console.log(req.body);
-	return User.findOne({email}).then(user=>{
-		if(!user){
+	return User.findOne({ email }).then(user => {
+		if (!user) {
 			throw new Error('User not found');
 		}
 		return user.comparePassword(password);
-	}).then(user=>{
+	}).then(user => {
 		console.log(user);
-		if(user){
-			return user.generateToken().then(token=>{
-				console.log('25'+token);
+		if (user) {
+			return user.generateToken().then(token => {
+				console.log('25' + token);
 				return token;
 			});
 		}
 		else return false;
-	}).catch(err=>{
-		console.log('31'+err);
+	}).catch(err => {
+		console.log('31' + err);
 		return false;
 	});
 }
 
-async function signup(user,res){
-	const new_user=new User(user);
+async function signup(user, res) {
+	const new_user = new User(user);
 	return new_user.save()
-		.then(async user=>{
+		.then(async user => {
 			console.log(user);
-			res.status(200).json({result:"Mail Sent"});
+			res.status(200).json({ result: "Mail Sent" });
 			await sendEmail(user);
-		}).catch(err=>{
+		}).catch(err => {
 			console.log(err);
-			res.send(400).json({result:''});
+			res.send(400).json({ result: '' });
 		});
 }
 
+async function updateUser(user, data) {
+	console.log(user);
+	let doc = await User.findOneAndUpdate()
+}
 
-async function sendEmail(user){
+async function sendEmail(user) {
 	console.log(user.email);
-	await User.findOne({email:user.email}).then(async user=>{
-		if(!user){
+	await User.findOne({ email: user.email }).then(async user => {
+		if (!user) {
 			throw new Error('User not found');
 		}
-		const token= await user.generateToken();
+		const token = await user.generateToken();
 		console.log(token)
-		html='<h2>Please click the link below to verify your email</h2>'+'<a href="http://localhost:3000/verify/'+token+'">Verify Here</a>';
+		html = '<h2>Please click the link below to verify your email</h2>' + '<a href="http://localhost:3000/verify/' + token + '">Verify Here</a>';
 		const mailOptions = {
 			from: 'rookievesper@gmail.com',
-			to : user.email,
-			subject:'Please confirm your Email account',
-			html:html
+			to: user.email,
+			subject: 'Please confirm your Email account',
+			html: html
 		}
-		mailServer.sendMail(mailOptions,(err,info)=>{
-			if(err){
+		mailServer.sendMail(mailOptions, (err, info) => {
+			if (err) {
 				console.log(err);
-			}else{
+			} else {
 				console.log(info);
 			}
 		})
 	})
 }
 
-async function verifyEmail(token){
-	return User.findByToken(token).then(user=>{
-		if(!user){
+async function verifyEmail(token) {
+	return User.findByToken(token).then(user => {
+		if (!user) {
 			throw new Error('User not found');
 		}
 		console.log(user);
-		user.email_verified=true;
+		user.email_verified = true;
 		return user.save()
-		.then(async user=>{
-			console.log(user);
-			return true;
-		})
-		.catch(err=>{
-			console.log(err);
-			return false;
-		});
+			.then(async user => {
+				console.log(user);
+				return true;
+			})
+			.catch(err => {
+				console.log(err);
+				return false;
+			});
 	});
 }
 
-module.exports={login,signup,verifyEmail};
+module.exports = { login, signup, verifyEmail, updateUser };
