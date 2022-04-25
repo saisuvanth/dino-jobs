@@ -1,22 +1,22 @@
 <nav class="main-nav">
   <ul>
-    <li class="active">
+    <li class="<%= active == "home" ? "active" : "" %>">
       <a href="home" class="has-subnav">
         <i style="height: fit-content" class="fa fa-home fa-custom"></i>
       </a>
     </li>
     <li>
-      <a href="profile" class="has-subnav">
+      <a href="profile" class="has-subnav <%= active == "profile" ? "active" : "" %>">
         <i style="height: fit-content" class="fa fa-user fa-custom"></i>
       </a>
     </li>
     <li>
-      <a href="jobpost" class="has-subnav">
+      <a href="jobpost" class="has-subnav <%= active == "jobpost" ? "active" : "" %>">
         <i style="height: fit-content" class="fa fa-suitcase fa-custom"></i>
       </a>
     </li>
     <li>
-      <a href="interview" class="has-subnav">
+      <a href="interview" class="has-subnav <%= active == "interview" ? "active" : "" %>">
         <i style="height: fit-content" class="fa fa-envelope fa-custom"></i>
       </a>
     </li>

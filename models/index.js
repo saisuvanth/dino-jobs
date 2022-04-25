@@ -7,8 +7,6 @@ connect(process.env.MONGO_URI,{
 	console.log('Database connected');
 });
 
-setTimeout(() => console.log("urmom"), 5000);
-
 module.exports={
 	User:require('./UserModel'),
 	Job:require('./JobModel'),

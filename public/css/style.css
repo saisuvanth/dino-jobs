@@ -36,7 +36,7 @@
   background-color: var(--main-darklg);
 }
 
-.logo > h3 {
+.logo>h3 {
   color: var(--main-light);
 }
 
@@ -58,7 +58,7 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: var(--main-dark);
+  /* background-color: var(--main-dark); */
 }
 
 video {
@@ -141,7 +141,7 @@ video {
   justify-content: center;
 }
 
-.main__message_container > input {
+.main__message_container>input {
   height: 50px;
   flex: 1;
   font-size: 1rem;
@@ -165,19 +165,19 @@ video {
   margin: 1rem 0;
 }
 
-.message > b {
+.message>b {
   color: #080808;
   display: flex;
   align-items: center;
   text-transform: capitalize;
 }
 
-.message > b > i {
+.message>b>i {
   margin-right: 0.7rem;
   font-size: 1.5rem;
 }
 
-.message > span {
+.message>span {
   color: #1f1f1f;
   margin: 5px;
 }
@@ -205,6 +205,7 @@ video {
   .main__right {
     display: none;
   }
+
   .main__left {
     width: 100%;
     flex: 1;
@@ -218,4 +219,28 @@ video {
   #showChat {
     display: flex;
   }
+}
+
+.editor, .output {
+  border-radius: 6px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  height: 340px;
+  letter-spacing: normal;
+  line-height: 20px;
+  padding: 10px;
+  tab-size: 4;
+}
+
+.codejar-wrap {
+  width: 48%;
+  margin: 1rem auto;
+  background-color: transparent;
+}
+
+.codearea {
+  width: 100%;
+  display: flex;
 }

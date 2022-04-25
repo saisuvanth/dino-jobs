@@ -1,10 +1,22 @@
 window.addEventListener('resize',()=>{
+	console.log("urmom")
 	if(window.innerWidth < 768){
 		makeOffCanvas();
 	}else{
 		removeOffCanvas();
 	}
 });
+
+const setJobs = async () => {
+	const jobContainer = document.getElementsByClassName('job-box')[0];
+	const body = document.querySelector('body');
+	jobContainer.style.height += (window.innerHeight - body.height) + 'px';
+}
+
+window.addEventListener('load', () => {
+	setJobs();
+})
+
 window.addEventListener('load',()=>{
 	if(window.innerWidth < 768){
 		makeOffCanvas();

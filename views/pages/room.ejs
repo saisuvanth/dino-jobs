@@ -1,112 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%- include('../partials/Header.ejs', filename="room" ) %>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>videoChatApp</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-twilight.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
-    <link rel="stylesheet" href="/css/navbar.css">
     <script src="/js/simplepeer.min.js"></script>
     <script>
       const ROOM_ID = "<%= roomId %>";
     </script>
   </head>
-    <%- include('../partials/Header.ejs')  %> 
-  
-<body>
-  
-  <div class="header">
-    <div class="logo">
-      <h3 id="userIdHeader">Video Chat</h2>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <h4 id="userIdHeader">Video Chat</h4>
+      </div>
     </div>
-  </div>
-  
-  <div class="main">
-    <nav class="main-nav">
-      <ul>
-        <li class="active">
-          <a href="/home" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-home fa-custom"></i>
-          </a>
-        </li>
-        <li>
-          <a href="/profile" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-user fa-custom"></i>
-          </a>
-        </li>
-        <li>
-          <a href="/jobpost" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-suitcase fa-custom"></i>
-          </a>
-        </li>
-        <li>
-          <a href="/interview" class="has-subnav">
-            <i style="height: fit-content" class="fa fa-envelope fa-custom"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="main__left">
-      <div class="code-editor">
-        <div class="editor-wrapper">
-            <div id="editor-code" class="editor"></div>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.14/ace.js"
-          integrity="sha512-6ts6Fu561/yzWvD6uwQp3XVYwiWNpWnZ0hdeQrETqtnQiGjTfOS06W76aUDnq51hl1SxXtJaqy7IsZ3oP/uZEg=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
-          const editor = ace.edit("editor-code");
-          editor.setTheme("ace/theme/one_dark");
-          editor.session.setMode("ace/mode/javascript");
-        </script>
-      </div>
-      <div class="videos__group">
-        <div id="video-grid">
-
-        </div>
-      </div>
-      <div class="options">
-        <div class="options__left">
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <button onclick="startVideo()" id="stopVideo" class="options__button">
-            <i class="fa fa-video-camera int-icon" style="margin-top: 70px;"></i>
-          </button>
-          <button onclick="toggleMute()" id="muteButton" class="options__button" >
-            <i class="fa fa-microphone int-icon" style="margin-top: 70px;"></i>
-          </button>
-          
-        </div>
-        <button type="button" class="btn btn-danger" style="margin-left: 40%;"><a href="/home"><i class="fa-solid fa-phone-slash" style="color: white"></i></a></button>
-        <div class="options__right">
-          <div id="inviteButton" class="options__button">
-            <i class="fas fa-user-plus int-icon" ></i>
+    <div class="main">
+      <%- include('../partials/Navbar.ejs', active="interview") %>
+        <div class="main__left pl-5">
+          <div class="codearea">
+            <div class="editor hljs language-js"></div>
+            <div class="editor output codejar-wrap"></div>
           </div>
-          
-        </div>
-        
-      </div>
-    </div>
-    <div class="main__right">
-      <div class="main__chat_window">
-        <div class="messages">
+          <script type="module" id="code">
+            import { CodeJar } from "https://medv.io/codejar/codejar.js"
+            import { withLineNumbers } from 'https://medv.io/codejar/linenumbers.js'
+            let options = {
+              tab: ' '.repeat(4), // default is '\t'
+              indentOn: /[(\[]$/, // default is /{$/
+            }
+            const jar = new CodeJar(
+              document.querySelector(".editor"),
+              withLineNumbers(Prism.highlightElement),
+              options
+            )
+          </script>
+          <div class="videos__group">
+            <div id="video-grid">
+              <div class="video-container">
+                <div class="video-container__video">
+                  <video id="localVideo" autoplay muted></video>
+                </div>
+              </div>
+              <div class="video-container">
+                <div class="video-container__video">
+                  <video id="remoteVideo" autoplay></video>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="options">
+            <div class="options__left">
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              <button onclick="startVideo()" id="stopVideo" class="options__button">
+                <i class="fa fa-video-camera int-icon" style="margin-top: 70px;"></i>
+              </button>
+              <button onclick="toggleMute()" id="muteButton" class="options__button">
+                <i class="fa fa-microphone int-icon" style="margin-top: 70px;"></i>
+              </button>
 
+            </div>
+            <button type="button" class="btn btn-danger" style="margin-left: 40%;"><a href="/home"><i
+                  class="fa-solid fa-phone-slash" style="color: white"></i></a></button>
+            <div class="options__right">
+              <div id="inviteButton" class="options__button">
+                <i class="fas fa-user-plus int-icon"></i>
+              </div>
+
+            </div>
+          </div>
         </div>
-      </div>
-      <form>
-        <div class="main__message_container">
-          <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
-          <button id="send" class="options__button" type="submit">
-            <i class="fa fa-plus int-icon" aria-hidden="true" style="margin-top: 70px;" ></i>
-          </button>
-          </button>
+        <div class="main__right">
+          <div class="main__chat_window">
+            <div class="messages">
+            </div>
+          </div>
+          <form>
+            <div class="main__message_container">
+              <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
+              <button id="send" class="options__button" type="submit">
+                <i class="fa fa-plus int-icon" aria-hidden="true" style="margin-top: 70px;"></i>
+              </button>
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
     </div>
-  </div>
-</body>
-<script src="/js/script.js"></script>
+  </body>
+  <script src="/js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 
 </html>

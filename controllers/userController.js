@@ -5,10 +5,9 @@ const mailServer=nodemailer.createTransport({
 	service:'gmail',
 	auth:{
 		user:'rookievesper@gmail.com',
-		pass:'furrySimp'
+		pass:'furrysimp'
 	}
 });
-
 
 function login(req){
 	const {email,password,is_checked}=req.body;
