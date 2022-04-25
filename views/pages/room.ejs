@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/Header.ejs', filename="room" ) %>
+
   <head>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/navbar.css">
@@ -15,16 +16,20 @@
     <script src="/js/simplepeer.min.js"></script>
     <script>
       const ROOM_ID = "<%= roomId %>";
+      var user = {
+        name: "<%= userName %>",
+        email: "<%= userEmail %>",
+      };
+      console.log(user)
     </script>
   </head>
+
   <body>
     <div class="header">
-      <div class="logo">
         <h4 id="userIdHeader">Video Chat</h4>
-      </div>
     </div>
     <div class="main">
-      <%- include('../partials/Navbar.ejs', active="interview") %>
+      <%- include('../partials/Navbar.ejs', active="interview" ) %>
         <div class="main__left pl-5">
           <div class="codearea">
             <div class="editor hljs language-js"></div>
@@ -34,8 +39,8 @@
             import { CodeJar } from "https://medv.io/codejar/codejar.js"
             import { withLineNumbers } from 'https://medv.io/codejar/linenumbers.js'
             let options = {
-              tab: ' '.repeat(4), // default is '\t'
-              indentOn: /[(\[]$/, // default is /{$/
+              tab: ' '.repeat(4),
+              indentOn: /[(\[]$/, 
             }
             const jar = new CodeJar(
               document.querySelector(".editor"),
@@ -45,16 +50,8 @@
           </script>
           <div class="videos__group">
             <div id="video-grid">
-              <div class="video-container">
-                <div class="video-container__video">
-                  <video id="localVideo" autoplay muted></video>
-                </div>
-              </div>
-              <div class="video-container">
-                <div class="video-container__video">
-                  <video id="remoteVideo" autoplay></video>
-                </div>
-              </div>
+              <video id="localVideo" autoplay muted></video>
+              <video id="remoteVideo" autoplay></video>
             </div>
           </div>
           <div class="options">

@@ -1,7 +1,9 @@
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
-const myVideo = document.createElement("video");
-myVideo.muted = true;
+const localVideo = document.getElementById("localVideo");
+console.log(localVideo);
+const remoteVideo = document.getElementById("remoteVideo");
+localVideo.muted = true;
 
 currUser = {};
 currUser.roomId = ROOM_ID;
@@ -9,8 +11,9 @@ currUser.initiated = false;
 
 socket.on("connect", () => {
   currUser.userId = socket.id;
+  currUser.username = user.name;
   document.getElementById("userIdHeader").innerText =
-    currUser.userId + " (Connecting)";
+    currUser.username + " (Connecting)";
   socket.emit("join-room", currUser.roomId, socket.id);
 });
 
@@ -67,7 +70,7 @@ const initPeer = () => {
 
   currUser.peer.on("connect", () => {
     document.getElementById("userIdHeader").innerText =
-      currUser.userId + "  (Connected)";
+      currUser.username + "  (Connected)";
     currUser.peer.send("whatever" + Math.random());
     document.querySelector("#editor-code").addEventListener("input", (e) => {
       e.preventDefault();
@@ -79,7 +82,7 @@ const initPeer = () => {
       e.preventDefault();
       let message = document.querySelector("#chat_message").value;
       currUser.peer.send(JSON.stringify({ type: "chat", data: message }));
-      addMessage(message, currUser.userId);
+      addMessage(message, currUser.username);
       document.querySelector("#chat_message").value = "";
     });
   });
@@ -98,8 +101,7 @@ const initPeer = () => {
   });
 
   currUser.peer.on("stream", (stream) => {
-    let video = document.createElement("video");
-    addVideoStream(video, stream);
+    addVideoStream(remoteVideo, stream);
   });
 };
 
@@ -116,7 +118,7 @@ const startVideo = () => {
     .getUserMedia({ video: true, audio: true })
     .then((stream) => {
       currUser.peer.addStream(stream);
-      addVideoStream(myVideo, stream);
+      addVideoStream(localVideo, stream);
     })
     .catch((err) => console.log(err));
 };
@@ -135,5 +137,5 @@ const toggleMute = () => {
   allVids.forEach((vid) => {
     vid.muted = !vid.muted;
   });
-  myVideo.muted = true;
+  localVideo.muted = true;
 };

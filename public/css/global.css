@@ -5,12 +5,14 @@
   box-sizing: border-box;
 }
 
-a ,.nav-link{
+a,
+.nav-link {
   text-decoration: none;
   color: #02564b;
 }
 
-a:hover,.nav-link:hover{
+a:hover,
+.nav-link:hover {
   color: #03a791;
   transition: 0.45s ease-in-out all;
 }
@@ -33,4 +35,8 @@ a:hover,.nav-link:hover{
 .form-check-input[type="checkbox"] {
   background-color: #eefffd;
   transition: 0.3s ease-in-out all;
+}
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
 }

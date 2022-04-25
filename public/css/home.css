@@ -68,10 +68,17 @@
     bottom: 5rem;
     right: 1rem;
     color: black;
-    padding: 1rem;
+    padding: 1.2rem;
     border: 0px;
     border-radius: 5rem;
-    background-color: rgb(197, 231, 197);
+    transform: scale(1);
+    transition: .3s ease-in;
+    background-color: #82f3bf;
+  }
+
+  #filter-btn:hover {
+    cursor: pointer;
+    transform: scale(1.12);
   }
 
   .filter-container {
@@ -242,7 +249,7 @@
   border: 2px solid;
 }
 
-.parent-row {
+/* .parent-row {
   height: 100%;
   position: absolute;
 }
@@ -251,4 +258,9 @@
   height: 100%;
   width: 80%;
   overflow-y: auto;
+} */
+
+.filters {
+  position: sticky;
+  top: 0;
 }
