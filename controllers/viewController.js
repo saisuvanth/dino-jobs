@@ -1,7 +1,7 @@
-const data=require('../h.json');
+const data = require('../h.json');
 
-const getLanding=function(req,res,next){
-  res.status(200).render("pages/index",{title:"Landing"});
+const getLanding = function (req, res, next) {
+  res.status(200).render("pages/index", { title: "Landing" });
 }
 
 const getHome = function (req, res, next) {
@@ -10,7 +10,7 @@ const getHome = function (req, res, next) {
 
 
 const getProfile = (req, res, next) => {
-  res.status(200).render("pages/user/profile", { title: "Profile" });
+  res.status(200).render("pages/user/profile", { user: req.user });
 }
 
 const getJobPost = (req, res, next) => {
@@ -18,4 +18,4 @@ const getJobPost = (req, res, next) => {
 }
 
 
-module.exports = {getHome,getProfile,getLanding,getJobPost};
+module.exports = { getHome, getProfile, getLanding, getJobPost };

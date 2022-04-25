@@ -1,33 +1,33 @@
-const {User}=require('./models');
+const { User } = require('./models');
 
 
-const getLogin=(req,res,next)=>{
-	const cookie=req.cookies.login;
-	if(cookie){
-		User.findByToken(cookie).then(user=>{
-			if(user){
-				req.user=user;
+const getLogin = (req, res, next) => {
+	const cookie = req.cookies.login;
+	if (cookie) {
+		User.findByToken(cookie).then(user => {
+			if (user) {
+				req.user = user;
 				next();
-			}else{
+			} else {
 				throw new Error('User not found');
 			}
-		}).catch(err=>{
-			err.removeToken(token).then(()=>{
+		}).catch(err => {
+			err.removeToken(token).then(() => {
 				res.clearCookie('login');
 				res.redirect('/');
-			}).catch(err=>console.log(err));
+			}).catch(err => console.log(err));
 		});
-	}else{
+	} else {
 		res.redirect('/');
 	}
 }
-const loginFlag=(req,res,next)=>{
-	const cookie=req.cookies.login;
-	if(cookie){
+const loginFlag = (req, res, next) => {
+	const cookie = req.cookies.login;
+	if (cookie) {
 		res.redirect('/home');
-	}else{
+	} else {
 		next();
 	}
 }
 
-module.exports={getLogin,loginFlag}
+module.exports = { getLogin, loginFlag }
