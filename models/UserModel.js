@@ -26,7 +26,7 @@ const UserSchema = new Schema({
   },
   type: {
     type: String,
-    default: "User",
+    default: "user",
   },
   company: {
     type: Schema.Types.ObjectId,
@@ -40,30 +40,62 @@ const UserSchema = new Schema({
     type: String,
     default: null,
   },
-  cover_photo: {
-    type: String,
-    default: null,
-  },
-  resume: {
-    type: String,
-    default: null,
-  },
-  location: String,
+  address: String,
   bio: String,
   skills: [String],
-  work_experience: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "WorkExperience",
+  secondarySchool: {
+    name: String,
+    location: String,
+    startDate: String,
+    endDate: String,
+    cgpa: String,
+  },
+  underGraduate: {
+    name: String,
+    location: String,
+    startDate: String,
+    endDate: String,
+    cgpa: String,
+  },
+  workExperience: {
+    companyName: {
+      type: String,
     },
-  ],
-  social_profiles: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "SocialProfile",
+    position: {
+      type: String,
     },
+    startDate: {
+      type: Date,
+    },
+    endDate: {
+      type: Date,
+    },
+    description: {
+      type: String,
+    }
+  },
+  website: {
+    type: String,
+    default: null
+  },
+  github: {
+    type: String,
+    default: null
+  },
+  linkedin: {
+    type: String,
+    default: null
+  },
+  twitter: {
+    type: String,
+    default: null
+  },
+  applied_jobs: [{
+    type: Schema.Types.ObjectId,
+    ref: "Job",
+  }
   ],
-  pref_role: {
+  prefRole: {
     type: String,
     default: null,
   },
@@ -87,7 +119,7 @@ UserSchema.methods.toJSON = function () {
   delete userObject.password;
   delete userObject.tokens;
   userObject.key = userObject._id;
-  console.log(userObject);
+  delete userObject._id;
   return userObject;
 };
 
@@ -95,7 +127,6 @@ UserSchema.methods.toJSON = function () {
 UserSchema.methods.comparePassword = function (password) {
   const user = this;
   return bcrypt.compare(password, user.password).then((isMatch) => {
-    console.log(isMatch);
     if (!isMatch) {
       return Promise.reject();
     }
@@ -146,14 +177,12 @@ UserSchema.methods.removeToken = function (token) {
 
 UserSchema.pre("save", function (next) {
   let user = this;
-  console.log(user.isModified("password"));
   if (user.isModified("password")) {
     bcrypt.genSalt(10).then((salt, err) => {
       if (err) throw err;
       bcrypt.hash(user.password, salt, (er, hash) => {
         if (er) throw er;
         user.password = hash;
-        console.log(next);
         return next();
       });
     });

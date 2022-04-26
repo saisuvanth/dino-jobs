@@ -1,0 +1,22 @@
+<nav class="main-nav">
+	<ul>
+		<li <%=active=="home" ? 'class=active' : "" %>
+			>
+			<a href="/manager/home" class="has-subnav">
+				<i style="height: fit-content" class="fa fa-user fa-custom"></i>
+			</a>
+		</li>
+		<li <%=active=="job-post" ? 'class=active' : "" %>
+			>
+			<a href="job-post" class="has-subnav">
+				<i style="height: fit-content" class="fa fa-suitcase fa-custom"></i>
+			</a>
+		</li>
+		<li <%=active=="interview" ? 'class=active' : "" %>
+			>
+			<a href="/interview" class="has-subnav">
+				<i style="height: fit-content" class="fa fa-envelope fa-custom"></i>
+			</a>
+		</li>
+	</ul>
+</nav>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('../../partials/Header.ejs') %>
+
+	<body>
+		<%- include('../../partials/ManNavbar.ejs') %>
+			<nav class="navbar navbar-expand-lg navbar-light bg-white" style="padding-left: 6rem">
+				<a class="navbar-brand" style="margin: 0px" href="">
+					<img class="logo" src="/assets/dino-logo.png" alt="" />
+				</a>
+				<button class="navbar-toggler mx-3" type="button" data-toggle="collapse" data-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="px-3 collapse navbar-collapse flex-row-reverse" id="navbarNav">
+					<ul class="navbar-nav d-flex align-items-center">
+						<li class="nav-item active px-2">
+							<a class="nav-link" href="">Home</a>
+						</li>
+						<li class="nav-item px-2">
+							<a class="nav-link" href="">About</a>
+						</li>
+						<li class="nav-item">
+							<button class="btn btn-danger" style="margin-top: 0px;">
+								<a href="/logout" style="color: white;">Log Out</a>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="container">
+					<div class="container-fluid" id="main">
+						<div class="container mt-5">
+							<div class="row">
+								<div class="col-md-12">
+									<h1>Edit your Company Profile</h1>
+								</div>
+								<div class="container m-2 mt-3">
+									<ul class="nav nav-tabs" id="myTab" role="tablist">
+										<li class="nav-item" role="presentation">
+											<button class="nav-link active" id="about-tab" data-bs-toggle="tab"
+												data-bs-target="#about" type="button" role="tab" aria-controls="about"
+												aria-selected="true">
+												About
+											</button>
+										</li>
+										<li class="nav-item" role="presentation">
+											<button class="nav-link" id="company-tab" data-bs-toggle="tab"
+												data-bs-target="#company" type="button" role="tab"
+												aria-controls="company" aria-selected="true">
+												Company
+											</button>
+										</li>
+									</ul>
+									<form onsubmit="handleSubmit(event)">
+										<div class="tab-content" id="myTabContent">
+											<div class="tab-pane fade show active" id="about" role="tabpanel"
+												aria-labelledby="about-tab">
+												<div class="card m-3 p-3">
+													<div class="row" id="form-parent">
+														<div class="col col-9 justify-content-center">
+															<label for="name">Name</label>
+															<div class="input-group mb-1">
+																<span class="input-group-text" style="
+                                    background-color: transparent;
+                                    color: gray;
+                                    border-right: none;
+                                  " id="basic-addon1">
+																	<i class="fas fa-user"></i>
+																</span>
+																<input type="text" class="form-control" id="text"
+																	value="<%= user.name %>" />
+															</div>
+															<label for="email">Email</label>
+															<div class="input-group mb-1">
+																<span class="input-group-text" style="
+                                    background-color: transparent;
+                                    color: gray;
+                                    border-right: none;
+                                  " id="basic-addon1">
+																	<i class="fas fa-envelope"></i>
+																</span>
+																<input type="email" class="form-control" id="email"
+																	value="<%= user.email %>" disabled />
+															</div>
+															<label for="phone">Phone</label>
+															<div class="input-group mb-1">
+																<span class="input-group-text" style="
+                                    background-color: transparent;
+                                    color: gray;
+                                    border-right: none;
+                                  " id="basic-addon1">
+																	<i class="fas fa-phone"></i>
+																</span>
+																<input type="phone" class="form-control" id="phone"
+																	value="<%= user?.phone %>" pattern="[0-9]{10}" />
+															</div>
+															<div class="form-group pb-3">
+																<label for="address">Address</label>
+																<textarea class="form-control" id="address" rows="2"
+																	placeholder="Address"
+																	value="<%= user?.address %>">Lorem Ipsum dolor</textarea>
+															</div>
+														</div>
+														<div
+															class="col col-3 d-flex justify-content-center align-items-center form-parent-right">
+															<div>
+																<img src="/assets/avatar.jpg" id="user-avatar"
+																	alt="Profile Pic"
+																	class="h-50 rounded-circle image" />
+																<input type="file" name="avatar" id="avatar"
+																	accept="image/*" hidden />
+																<button class="btn btn-success image-add"
+																	onclick="handleImage()">
+																	<i class="fa-solid fa-plus"></i>
+																</button>
+															</div>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label for="about">Bio</label>
+														<textarea class="form-control" id="about" rows="3"
+															placeholder="Write about yourself"
+															value="<%= user?.bio %>">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam minima fugiat repellendus quisquam vero est facere, dignissimos magni qui officiis vel nemo ipsam cum aperiam laborum, eius consequatur. Consequatur, aliquid.</textarea>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane fade" id="company" role="tabpanel"
+												aria-labelledby="company-tab">
+												<div class="card m-3 p-3">
+													<div class="row" id="form-parent">
+														<div class="col col-9 justify-content-center">
+															<label for="name">Name of Company</label>
+															<div class="input-group mb-1">
+																<span class="input-group-text" style="
+                                  background-color: transparent;
+                                  color: gray;
+                                  border-right: none;
+                                " id="basic-addon1">
+																	<i class="fas fa-user"></i>
+																</span>
+																<input type="text" class="form-control" id="text"
+																	value="<%= user.company?.name %>" />
+															</div>
+															<label for="text">Description</label>
+															<div class="input-group mb-1">
+																<span class="input-group-text" style="
+                                  background-color: transparent;
+                                  color: gray;
+                                  border-right: none;
+                                " id="basic-addon1">
+																	<i class="fas fa-envelope"></i>
+																</span>
+																<input type="text" class="form-control" id="text"
+																	value="<%= user.company?.description %>" />
+															</div>
+															<div class="form-group pb-3">
+																<label for="address">Logo</label>
+																<input name="logo" type="file" class="form-control"
+																	id="text" value="<%= user.company?.logo %>" />
+															</div>
+															<label for="name">Website</label>
+															<div class="input-group mb-1">
+																<span class="input-group-text" style="
+                                  background-color: transparent;
+                                  color: gray;
+                                  border-right: none;
+                                " id="basic-addon1">
+																	<i class="fas fa-user"></i>
+																</span>
+																<input name="website" type="text" class="form-control"
+																	id="text" value="<%= user.company?.website %>" />
+															</div>
+															<label for="name">Number of Employees</label>
+															<div class="input-group mb-1">
+																<span class="input-group-text" style="
+                                  background-color: transparent;
+                                  color: gray;
+                                  border-right: none;
+                                " id="basic-addon1">
+																	<i class="fas fa-user"></i>
+																</span>
+																<input name="no" type="number" class="form-control"
+																	id="text" value="<%= user.company?.employees %>" />
+															</div>
+
+														</div>
+													</div>
+													<div class="container d-flex justify-content-start">
+														<button type="submit" class="save-changes"
+															data-bs-toggle="modal" data-bs-target="#submitModal">
+															Save Changes
+														</button>
+													</div>
+													<div class="modal fade" id="submitModal" tabindex="-1"
+														aria-labelledby="submitModalLabel" aria-hidden="true">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="submitModalLabel">
+																	Modal title
+																</h5>
+																<button type="button" class="btn-close"
+																	data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">Confirm Submission</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-bs-dismiss="modal">
+																	Close
+																</button>
+																<button type="button" class="btn btn-primary">
+																	Save changes
+																</button>
+															</div>
+														</div>
+													</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>

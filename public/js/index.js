@@ -31,7 +31,7 @@ async function handleSubmit(event, flag) {
   const data = new FormData(form);
   const password = data.get("password");
   if (flag === "login") {
-    const res = await fetch("http://localhost:3000/login", {
+    const res = await fetch(`http://localhost:3000/${title}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,9 +43,16 @@ async function handleSubmit(event, flag) {
       }),
     });
     if (res.status === 200) {
-      window.location.href = "http://localhost:3000/home";
+      window.location.href = title === 'user' ? `http://localhost:3000/user/home` : `http://localhost:3000/manager/home`;
     } else {
-      location.reload();
+      let alert = document.createElement("div");
+      alert.classList.add("alert", "alert-danger");
+      alert.innerText = "User not Authorized";
+      document.getElementById("alert-div").appendChild(alert);
+      setTimeout(() => {
+        alert.remove();
+        window.location.href = "http://localhost:3000/";
+      }, 3000);
     }
   } else {
     const confirmPassword = data.get("confirmPassword");
@@ -58,7 +65,7 @@ async function handleSubmit(event, flag) {
       }
       return;
     }
-    fetch("http://localhost:3000/register", {
+    fetch(`http://localhost:3000/${title}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,8 +79,7 @@ async function handleSubmit(event, flag) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.result == "Mail Sent") {
+        if (data.result === "Mail Sent") {
           //add bootstrap alert
           let alert = document.createElement("div");
           alert.classList.add("alert", "alert-warning");
@@ -83,7 +89,22 @@ async function handleSubmit(event, flag) {
             alert.remove();
             window.location.href = "http://localhost:3000/";
           }, 3000);
+        } else {
+          let alert = document.createElement("div");
+          alert.classList.add("alert", "alert-danger");
+          alert.innerText = data.result;
+          document.getElementById("alert-div").appendChild(alert);
+          setTimeout(() => {
+            alert.remove();
+          }, 5000);
         }
       });
   }
 }
+
+const userlink = document.getElementById("user");
+const managlink = document.getElementById("manager");
+
+managlink.addEventListener("click", () => {
+
+});

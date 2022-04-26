@@ -26,37 +26,40 @@
 
   <body>
     <div class="header">
-        <h4 id="userIdHeader">Video Chat</h4>
+      <h4 id="userIdHeader">Video Chat</h4>
     </div>
     <div class="main">
       <%- include('../partials/Navbar.ejs', active="interview" ) %>
         <div class="main__left pl-5">
           <div class="codearea">
-            <div class="editor hljs language-js"></div>
-            <div class="editor output codejar-wrap"></div>
+            <div class="editor hljs language-cpp"></div>
+            <div id="output" class="output hljs language-cpp codejar-wrap"></div>
           </div>
-          <script type="module" id="code">
-            import { CodeJar } from "https://medv.io/codejar/codejar.js"
-            import { withLineNumbers } from 'https://medv.io/codejar/linenumbers.js'
+          <script src="/js/codejar.js"></script>
+          <script src="/js/linenumbers.js"></script>
+          <script id="code">
             let options = {
               tab: ' '.repeat(4),
-              indentOn: /[(\[]$/, 
+              indentOn: /[(\[]$/,
             }
-            const jar = new CodeJar(
+            var jar = new CodeJar(
               document.querySelector(".editor"),
               withLineNumbers(Prism.highlightElement),
               options
             )
           </script>
-          <div class="videos__group">
-            <div id="video-grid">
-              <video id="localVideo" autoplay muted></video>
-              <video id="remoteVideo" autoplay></video>
+          <div class="vidarea">
+            <div class="vid-wrap">
+              <video id="localVideo" class="video" autoplay
+                poster="https://www.voicesummit.ai/hubfs/video-placeholder.jpg" muted></video>
+            </div>
+            <div class="vid-wrap">
+              <video id="remoteVideo" class="video" autoplay
+                poster="https://www.voicesummit.ai/hubfs/video-placeholder.jpg"></video>
             </div>
           </div>
           <div class="options">
             <div class="options__left">
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               <button onclick="startVideo()" id="stopVideo" class="options__button">
                 <i class="fa fa-video-camera int-icon" style="margin-top: 70px;"></i>
               </button>
@@ -68,8 +71,8 @@
             <button type="button" class="btn btn-danger" style="margin-left: 40%;"><a href="/home"><i
                   class="fa-solid fa-phone-slash" style="color: white"></i></a></button>
             <div class="options__right">
-              <div id="inviteButton" class="options__button">
-                <i class="fas fa-user-plus int-icon"></i>
+              <div id="runCodeButton" class="options__button" onclick="evalCode()">
+                <i class="fa-solid fa-arrows-rotate" style="color: white"></i>
               </div>
 
             </div>
@@ -84,7 +87,7 @@
             <div class="main__message_container">
               <input id="chat_message" type="text" autocomplete="off" placeholder="Type message here...">
               <button id="send" class="options__button" type="submit">
-                <i class="fa fa-plus int-icon" aria-hidden="true" style="margin-top: 70px;"></i>
+                <i class="fa fa-plus int-icon" aria-hidden="true" style="margin-top: 60px;"></i>
               </button>
               </button>
             </div>

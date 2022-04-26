@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('../../partials/Header.ejs') %>
+
+  <body>
+    <%- include('../../partials/ManNavbar.ejs') %>
+
+      <div style="min-height: 100vh;" class="container d-flex justify-content-center align-items-center">
+        <div class="card p-4" style="border-radius: 16px; box-shadow: 10px;
+  margin-top: 1%;width:35rem;
+  border-radius: 10px; color: #dfdede; ;">
+          <h2 class="mb-4 pb-3 login-header" style="color: #3f8875">
+            Job-Posting
+          </h2>
+          <form class="p-3 w-90" action="/login" method="post">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="pb-1" style="color: #3f8875">Role in Hiring</label>
+                  <div class="input-group mb-1">
+                    <span class="input-group-text" style="
+                  background-color: transparent;
+                  border-right: none;
+                  border-radius: 16px 0 0 16px;
+                " id="basic-addon1">
+                      <i class="fa-brands fa-critical-role"></i>
+                    </span>
+                    <select class="form-control"
+                      style="cursor: pointer; border-radius: 0px; cursor: pointer; border-left: none; border-top-right-radius: 16px; border-bottom-right-radius: 16px;">
+                      <option>Web Developer</option>
+                      <option>Full Stack Engineer</option>
+                      <option>Computer Scientist</option>
+                    </select>
+                  </div>
+                  <small id="emailHelp" class="form-text text-muted" style="color: #3f8875">Role to Hire</small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="pb-1" style="color: #3f8875">Type</label>
+                  <div class="input-group mb-1">
+                    <span class="input-group-text" style="
+            background-color: transparent;
+            border-right: none;
+            border-radius: 16px 0 0 16px;
+          " id="basic-addon1">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Type"
+                      style="border-left: none; border-radius: 0 16px 16px 0" aria-label="emailId" name="emailId"
+                      aria-describedby="basic-addon1" required />
+                  </div>
+                  <small id="emailHelp" class="form-text text-muted" style="color: #dfdede">Type.</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label class="pb-1" style="color: #3f8875">Description Of Company</label>
+              <div class="input-group mb-1">
+                <span class="input-group-text" style="
+              background-color: transparent;
+              border-right: none;
+              border-radius: 16px 0 0 16px;
+            " id="basic-addon1">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Description"
+                  style="border-left: none; border-radius: 0 16px 16px 0" aria-label="emailId" name="emailId"
+                  aria-describedby="basic-addon1" required />
+              </div>
+              <small id="emailHelp" class="form-text text-muted" style="color: #dfdede">Company's description.</small>
+            </div>
+            <div class="form-group mb-3">
+              <label class="pb-1" style="color: #3f8875">Name Of Company</label>
+              <div class="input-group mb-1">
+                <span class="input-group-text" style="
+              background-color: transparent;
+              border-right: none;
+              border-radius: 16px 0 0 16px;
+            " id="basic-addon1">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <input type="name" class="form-control" placeholder="Company"
+                  style="border-left: none; border-radius: 0 16px 16px 0" aria-label="emailId" name="emailId"
+                  aria-describedby="basic-addon1" required />
+              </div>
+              <small id="emailHelp" class="form-text text-muted" style="color: #dfdede">Company's name.</small>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="pb-1" for="formGroupExampleInput" style="color: #3f8875">Salary</label>
+                  <div class="input-group mb-1">
+                    <span class="input-group-text" style="
+                background-color: transparent;
+                border-right: none;
+                border-radius: 16px 0 0 16px;
+              " id="basic-addon1">
+                      <i class="fa-solid fa-dollar-sign"></i>
+                    </span>
+                    <input type="number" class="form-control" id="formGroupExampleInput"
+                      placeholder="Enter amount in usd/inr"
+                      style="border-radius: 0px; border-left: none; border-top-right-radius: 16px; border-bottom-right-radius: 16px;">
+
+                  </div>
+                  <small id="emailHelp" class="form-text text-muted" style="color: #3f8875">Enter Amount</small>
+
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="pb-1" style="color: #3f8875">Location Of Company</label>
+                  <div class="input-group mb-1">
+                    <span class="input-group-text" style="
+              background-color: transparent;
+              border-right: none;
+              border-radius: 16px 0 0 16px;
+            " id="basic-addon1">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Location"
+                      style="border-left: none; border-radius: 0 16px 16px 0" aria-label="emailId" name="emailId"
+                      aria-describedby="basic-addon1" required />
+                  </div>
+                  <small id="emailHelp" class="form-text text-muted" style="color: #dfdede">Company's location.</small>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="exampleFormControlSelect1" style="color : #3f8875">Employee Count</label>
+              <div class="input-group mb-1">
+                <span class="input-group-text" style="
+              background-color: transparent;
+              border-right: none;
+              border-radius: 16px 0 0 16px;
+              height: 38px;
+            " id="basic-addon1">
+                  <i class="fa-solid fa-person"></i>
+                </span>
+                <select class="form-control mb-1" id="exampleFormControlSelect1"
+                  style="border-radius: 0px; cursor: pointer; border-left: none; border-top-right-radius: 16px; border-bottom-right-radius: 16px;">
+              </div>">
+              <option>50</option>
+              <option>150</option>
+              <option>300</option>
+              <option>500</option>
+              <option>1000 or above</option>
+              </select>
+            </div>
+            <small id="emailHelp" class="form-text text-muted" style="color: #3f8875">Employee's Number</small>
+        </div>
+        <div class="form-group mb-3">
+          <label for="exampleFormControlSelect1" style="color : #3f8875">Remote or Not</label>
+          <div class="input-group mb-1">
+            <span class="input-group-text" style="
+          background-color: transparent;
+          border-right: none;
+          border-radius: 16px 0 0 16px;
+          height: 38px;
+        " id="basic-addon1">
+              <i class="fa-solid fa-person"></i>
+            </span>
+            <select class="form-control mb-1" id="exampleFormControlSelect1"
+              style="border-radius: 0px; cursor: pointer; border-left: none; border-top-right-radius: 16px; border-bottom-right-radius: 16px;">
+          </div>">
+          <option>True</option>
+          <option>False</option>
+          </select>
+        </div>
+        <small id="emailHelp" class="form-text text-muted" style="color: #3f8875">Remote or not</small>
+
+
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <label class="pb-1" style="color: #3f8875">Required Skills</label>
+            <div class="input-group mb-1">
+              <span class="input-group-text" style="
+              background-color: transparent;
+              border-right: none;
+              border-radius: 16px 0 0 16px;
+            " id="basic-addon1">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <input type="email" class="form-control" placeholder="Skills"
+                style="border-left: none; border-radius: 0 16px 16px 0" aria-label="emailId" name="emailId"
+                aria-describedby="basic-addon1" required />
+            </div>
+            <small id="emailHelp" class="form-text text-muted" style="color: #3f8875">Required Skills</small>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <label class="pb-1" style="color: #3f8875">Experience</label>
+            <div class="input-group mb-1">
+              <span class="input-group-text" style="
+                background-color: transparent;
+                border-right: none;
+                border-radius: 16px 0 0 16px;
+              " id="basic-addon1">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <input type="number" class="form-control" placeholder="Experience in years"
+                style="border-left: none; border-radius: 0 16px 16px 0" aria-label="emailId" name="emailId"
+                aria-describedby="basic-addon1" required />
+            </div>
+            <small id="emailHelp" class="form-text text-muted" style="color: #3f8875">Experience Needed</small>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn-grad"
+        style="background-color: #b8f5d7; color: #3f8875; font-weight: 400;">Submit</button>
+      </form>
+      </div>
+      </div>
+      </div>
+
+
+      <!-- Optional JavaScript; choose one of the two! -->
+
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+      <!-- Option 2: Separate Popper and Bootstrap JS -->
+      <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+
+</html>

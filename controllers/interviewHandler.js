@@ -3,7 +3,7 @@ exports.initSockets = (io) => {
   const userData = {};
   io.on("connection", (socket) => {
     let roomIdtemp, userIdtemp;
-    socket.on("join-room", (roomId, userId) => {
+    socket.on("join-room", (roomId, userId, username) => {
       let initiate = false;
       roomIdtemp = roomId;
       userIdtemp = userId;
@@ -13,6 +13,7 @@ exports.initSockets = (io) => {
           userData[roomId].users.push({
             userId: userId,
             initiated: initiate,
+            username: username,
           });
         }
       } else {
@@ -21,6 +22,7 @@ exports.initSockets = (io) => {
             {
               userId: userId,
               initiated: initiate,
+              username: username
             },
           ],
         };
@@ -29,7 +31,6 @@ exports.initSockets = (io) => {
       if (userData[roomId].users.length == 2) {
         userData[roomId].users[0].initiated = true;
         let users = userData[roomId].users;
-        console.log({ userId, initiate, roomId, users });
         io.to(roomId).emit("user-connected", {
           users: users,
         });
@@ -37,14 +38,10 @@ exports.initSockets = (io) => {
     });
 
     socket.on("offerToServer", ({ data, receiverId, senderId }) => {
-      console.log(
-        "Server: Sending " + data.type + " to " + receiverId + " " + Date.now()
-      );
       socket.to(receiverId).emit("offerToClient", { data, senderId });
     });
 
     socket.on("ready-to-init", (userId) => {
-      console.log("Ready to init");
       io.to(userId).emit("init-peer");
     });
 

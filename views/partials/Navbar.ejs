@@ -1,29 +1,25 @@
 <nav class="main-nav">
   <ul>
-    <li 
-    <%= active == "home" ? 'class=active' : "" %>
-    >
-      <a href="/home" class="has-subnav">
+    <li <%=active=="home" ? 'class=active' : "" %>
+      >
+      <a href="/user/home" class="has-subnav">
         <i style="height: fit-content" class="fa fa-home fa-custom"></i>
       </a>
     </li>
-    <li
-    <%= active == "profile" ? 'class=active' : "" %>
-    >
-      <a href="/profile" class="has-subnav">
+    <li <%=active=="profile" ? 'class=active' : "" %>
+      >
+      <a href="/user/profile" class="has-subnav">
         <i style="height: fit-content" class="fa fa-user fa-custom"></i>
       </a>
     </li>
-    <li
-    <%= active == "jobpost" ? 'class=active' : "" %>
-    >
-      <a href="/jobpost" class="has-subnav">
+    <li <%=active=="applied-jobs" ? 'class=active' : "" %>
+      >
+      <a href="/applied-jobs" class="has-subnav">
         <i style="height: fit-content" class="fa fa-suitcase fa-custom"></i>
       </a>
     </li>
-    <li
-    <%= active == "interview" ? 'class=active' : "" %>
-    >
+    <li <%=active=="interview" ? 'class=active' : "" %>
+      >
       <a href="/interview" class="has-subnav">
         <i style="height: fit-content" class="fa fa-envelope fa-custom"></i>
       </a>

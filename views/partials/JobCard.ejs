@@ -1,18 +1,26 @@
 <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 p-2">
   <!-- Create a div to display job with apply and  contacts button-->
+  <script>
+    var job = "<%= JSON.stringify(job) %>".replaceAll('&#34;', '"').replace(/\\/g, '');
+    job = JSON.parse(job);
+    console.log(job);
+  </script>
   <div class="job-card">
     <div class="d-flex w-100 align-content-center">
       <div class="img-wrapper">
         <img
           src="https://static.boredpanda.com/blog/wp-content/uploads/2011/10/pod0042-apple-logo-steve-jobs-silhouette.jpg"
-          alt="Avatar"
-        />
+          alt="Avatar" />
       </div>
       <div class="job-details">
-        <h5 class="p-0 m-0"><%= job.name.slice(0,25) + (job.name.length > 25 ? "...": "") %></h5>
+        <h5 class="p-0 m-0">
+          <%= job.company.name.slice(0,25) + (job.company.name.length> 25 ? "...": "") %>
+        </h5>
         <div class="p-0 m-0">
           <i class="fas fa-map-marker-alt p-0"></i>
-          <span><%= job.location %></span>
+          <span>
+            <%= job.location %>
+          </span>
           <div class="empty-el"></div>
           <div class="job-date">
             <p class="p-0 m-0">2 days ago</p>
@@ -21,36 +29,45 @@
       </div>
     </div>
     <div class="d-flex w-100 p-1 align-content-center">
-      <h2 class="job-title" style="word-wrap: break-word"><%= job.role %></h2>
+      <h2 class="job-title" style="word-wrap: break-word">
+        <%= job.role %>
+      </h2>
     </div>
     <div class="d-flex w-100 p-1 align-content-center">
       <div class="job-date">
-        <p class="p-0 m-0"><%= job.salary %></p>
+        <p class="p-0 m-0">
+          <%= job.salary %>
+        </p>
       </div>
     </div>
     <div class="d-flex w-100 p-1 align-content-center flex-wrap">
       <!-- create bootstrap badges -->
-      <% if (job.type === 'Full Time') { %>
-      <div class="badge-wrapper">
-        <div class="badge badge-pill job-badge">Full Time</div>
-      </div>
-      <% } else { %>
-      <div class="badge-wrapper">
-        <div class="badge badge-pill job-badge">Part Time</div>
-      </div>
-      <% } %> <% if (job.type === 'Internship') { %>
-      <div class="badge-wrapper">
-        <div class="badge badge-pill job-badge">Internship</div>
-      </div>
-      <% } %> <% if (job.remote === true) { %>
-      <div class="badge-wrapper">
-        <div class="badge badge-pill job-badge">Remote</div>
-      </div>
-      <% } %> <% for (let i = 0; i < job.req_skills.length; i++) { %>
-      <div class="badge-wrapper">
-        <div class="badge badge-pill job-badge"><%= job.req_skills[i] %></div>
-      </div>
-      <% } %>
+      <% if (job.type==='Full Time' ) { %>
+        <div class="badge-wrapper">
+          <div class="badge badge-pill job-badge">Full Time</div>
+        </div>
+        <% } else { %>
+          <div class="badge-wrapper">
+            <div class="badge badge-pill job-badge">Part Time</div>
+          </div>
+          <% } %>
+            <% if (job.type==='Internship' ) { %>
+              <div class="badge-wrapper">
+                <div class="badge badge-pill job-badge">Internship</div>
+              </div>
+              <% } %>
+                <% if (job.remote===true) { %>
+                  <div class="badge-wrapper">
+                    <div class="badge badge-pill job-badge">Remote</div>
+                  </div>
+                  <% } %>
+                    <% for (let i=0; i < job.req_skills.length; i++) { %>
+                      <div class="badge-wrapper">
+                        <div class="badge badge-pill job-badge">
+                          <%= job.req_skills[i] %>
+                        </div>
+                      </div>
+                      <% } %>
     </div>
 
     <div class="d-flex w-100 p-1 align-content-center flex-wrap">
@@ -62,94 +79,179 @@
     </div>
     <div class="empty-el"></div>
     <div class="d-flex w-100 p-1 align-content-center flex-wrap">
-      <div class="job-buttons">
-        <button class="job-apply" data-bs-toggle="modal" data-bs-target="#card<%= index %>">Apply</button>
-      </div>
-      <div class="job-buttons">
-        <button class="job-contacts">Contact</button> 
-      </div>
-      <div class="modal fade" id="card<%= index %>" tabindex="-1" aria-labelledby="<%= index %>label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Vertically centered scrollable modal -->
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <% if(buttonflag){%>
+        <div class="job-buttons">
+          <button class="job-apply" data-bs-toggle="modal" data-bs-target="#card<%= index %>">Apply</button>
+        </div>
+        <div class="job-buttons">
+          <button class="job-contacts">Contact</button>
+        </div>
+        <% }else{ %>
+          <div class="job-buttons text-center">
+            <button class="job-contacts" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample">Contact</button>
+          </div>
+          <% } %>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
+              aria-labelledby="offcanvasExampleLabel">
+              <div class="offcanvas-header">
+                <img src="<%= job.company.logo%>" alt="">
+                <h5 class="offcanvas-title" id="of  fcanvasExampleLabel">
+                  <%= job.company.name %>
+                </h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <div class="container">
+                  <div class="row">
+                    <%= job.company.description%>
+                  </div>
+                  <div class="row">
+                    <a href="<%=job.company.website%>"></a>
+                  </div>
+                  <div class="row">
+                    <%= job.role%>
+                  </div>
+                  <div class="row">
+                    <%= job.description%>
+                  </div>
+                  <div class="row">
+                    <%=job.type%>
+                  </div>
+                  <div class="row">
+                    <%= job.salary%>
+                  </div>
+                  <div class="row">
+                    <%= job.location%>
+                  </div>
+                </div>
+                <div class="dropdown mt-3">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown">
+                    Dropdown button
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="card<%= index %>" tabindex="-1" aria-labelledby="<%= index %>label"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <!-- Vertically centered scrollable modal -->
+                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="job-card">
-                        <div class="d-flex w-100 align-content-center">
-                            <div class="img-wrapper">
-                                <img src="https://static.boredpanda.com/blog/wp-content/uploads/2011/10/pod0042-apple-logo-steve-jobs-silhouette.jpg"
-                                    alt="Avatar" />
-                            </div>
-                            <div class="job-details">
-                                <h5 class="p-0 m-0"><%= job.name.slice(0,25) + (job.name.length > 25 ? "...": "") %></h5>
-                                <div class="p-0 m-0">
-                                    <i class="fas fa-map-marker-alt p-0"></i>
-                                    <span><%= job.location %></span>
-                                    <div class="empty-el"></div>
-                                    <div class="job-date">
-                                        <p class="p-0 m-0">2 days ago</p>
-                                    </div>
-                                </div>
-                            </div>
+                      <div class="d-flex w-100 align-content-center">
+                        <div class="img-wrapper">
+                          <img
+                            src="https://static.boredpanda.com/blog/wp-content/uploads/2011/10/pod0042-apple-logo-steve-jobs-silhouette.jpg"
+                            alt="Avatar" />
                         </div>
-                        <div class="d-flex w-100 p-1 align-content-center">
-                            <h2 class="job-title" style="word-wrap: break-word"><%= job.role %></h2>
-                        </div>
-                        <div class="d-flex w-100 p-1 align-content-center">
+                        <div class="job-details">
+                          <h5 class="p-0 m-0">
+                            <%= job.role.slice(0,25) + (job.role.length> 25 ? "...": "") %>
+                          </h5>
+                          <div class="p-0 m-0">
+                            <i class="fas fa-map-marker-alt p-0"></i>
+                            <span>
+                              <%= job.location %>
+                            </span>
+                            <div class="empty-el"></div>
                             <div class="job-date">
-                                <p class="p-0 m-0"><%= job.salary %></p>
+                              <p class="p-0 m-0">2 days ago</p>
                             </div>
+                          </div>
                         </div>
-                        <div class="d-flex w-100 p-1 align-content-center flex-wrap">
-                          <!-- create bootstrap badges -->
-                          <% if (job.type === 'Full Time') { %>
+                      </div>
+                      <div class="d-flex w-100 p-1 align-content-center">
+                        <h2 class="job-title" style="word-wrap: break-word">
+                          <%= job.role %>
+                        </h2>
+                      </div>
+                      <div class="d-flex w-100 p-1 align-content-center">
+                        <div class="job-date">
+                          <p class="p-0 m-0">
+                            <%= job.salary %>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="d-flex w-100 p-1 align-content-center flex-wrap">
+                        <!-- create bootstrap badges -->
+                        <% if (job.type==='Full Time' ) { %>
                           <div class="badge-wrapper">
                             <div class="badge badge-pill job-badge">Full Time</div>
                           </div>
                           <% } else { %>
-                          <div class="badge-wrapper">
-                            <div class="badge badge-pill job-badge">Part Time</div>
-                          </div>
-                          <% } %> <% if (job.type === 'Internship') { %>
-                          <div class="badge-wrapper">
-                            <div class="badge badge-pill job-badge">Internship</div>
-                          </div>
-                          <% } %> <% if (job.remote === true) { %>
-                          <div class="badge-wrapper">
-                            <div class="badge badge-pill job-badge">Remote</div>
-                          </div>
-                          <% } %> <% for (let i = 0; i < job.req_skills.length; i++) { %>
-                          <div class="badge-wrapper">
-                            <div class="badge badge-pill job-badge"><%= job.req_skills[i] %></div>
-                          </div>
-                          <% } %>
-                        </div>
-                        <div class="d-flex w-100 p-1 align-content-center flex-wrap">
-                            <div class="job-description">
-                                <p class="p-1 m-0" style="word-wrap: break-word">
-                                  <%= job.description %>
-                                </p>
+                            <div class="badge-wrapper">
+                              <div class="badge badge-pill job-badge">Part Time</div>
                             </div>
+                            <% } %>
+                              <% if (job.type==='Internship' ) { %>
+                                <div class="badge-wrapper">
+                                  <div class="badge badge-pill job-badge">Internship</div>
+                                </div>
+                                <% } %>
+                                  <% if (job.remote===true) { %>
+                                    <div class="badge-wrapper">
+                                      <div class="badge badge-pill job-badge">Remote</div>
+                                    </div>
+                                    <% } %>
+                                      <% for (let i=0; i < job.req_skills.length; i++) { %>
+                                        <div class="badge-wrapper">
+                                          <div class="badge badge-pill job-badge">
+                                            <%= job.req_skills[i] %>
+                                          </div>
+                                        </div>
+                                        <% } %>
+                      </div>
+                      <div class="d-flex w-100 p-1 align-content-center flex-wrap">
+                        <div class="job-description">
+                          <p class="p-1 m-0" style="word-wrap: break-word">
+                            <%= job.description %>
+                          </p>
                         </div>
-                        <div class="empty-el"></div>
-                        <div class="d-flex w-100 p-1 align-content-center flex-wrap">
-                        </div>
+                      </div>
+                      <div class="empty-el"></div>
+                      <div class="d-flex w-100 p-1 align-content-center flex-wrap">
+                      </div>
                     </div>
-                </div>
+                  </div>
 
-                <div class="form-group text-area-box">
-                    <label for="comment"><h5>Cover Letter </h5></label>
+                  <div class="form-group text-area-box">
+                    <label for="comment">
+                      <h5>Cover Letter </h5>
+                    </label>
                     <textarea class="form-control form-box" rows="4" id="comment"></textarea>
                   </div>
 
-                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 p-2">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success">Apply</button>
+                  <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 p-2">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="handleApply()">Apply</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
+
+            <script>
+              function handleApply() {
+                fetch('/apply-job', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(job)
+                }).then(res => res.json()).then(data => {
+                  console.log(data);
+                })
+              }
+            </script>
     </div>
   </div>
 </div>

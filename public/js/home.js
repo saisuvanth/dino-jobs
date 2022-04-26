@@ -1,8 +1,7 @@
-window.addEventListener('resize',()=>{
-	console.log("urmom")
-	if(window.innerWidth < 768){
+window.addEventListener('resize', () => {
+	if (window.innerWidth < 768) {
 		makeOffCanvas();
-	}else{
+	} else {
 		removeOffCanvas();
 	}
 });
@@ -13,29 +12,33 @@ const setJobs = async () => {
 	jobContainer.style.height += (window.innerHeight - body.height) + 'px';
 }
 
+const handleLogout = () => {
+
+}
+
 window.addEventListener('load', () => {
 	setJobs();
 })
 
-window.addEventListener('load',()=>{
-	if(window.innerWidth < 768){
+window.addEventListener('load', () => {
+	if (window.innerWidth < 768) {
 		makeOffCanvas();
 	}
 });
-const filterDiv=document.querySelector('#filter-parent');
-const filterBut=document.querySelector('#filter-close-button');
+const filterDiv = document.querySelector('#filter-parent');
+const filterBut = document.querySelector('#filter-close-button');
 
-function makeOffCanvas(){
-	filterDiv.id='offcanvasExample';
-	filterDiv.className='offcanvas offcanvas-start';
-	filterBut.style.display='block';
+function makeOffCanvas() {
+	filterDiv.id = 'offcanvasExample';
+	filterDiv.className = 'offcanvas offcanvas-start';
+	filterBut.style.display = 'block';
 }
 
-function removeOffCanvas(){
-	const filterDiv=document.getElementById('offcanvasExample');
-	filterDiv.id='filter-parent';
-	filterDiv.className='col-md-3 col-sm-0';
-	filterDiv.ariaHidden=false;
-	filterDiv.style.visibility='visible';
-	filterBut.style.display='none';
+function removeOffCanvas() {
+	const filterDiv = document.getElementById('offcanvasExample');
+	filterDiv.id = 'filter-parent';
+	filterDiv.className = 'col-md-3 col-sm-0';
+	filterDiv.ariaHidden = false;
+	filterDiv.style.visibility = 'visible';
+	filterBut.style.display = 'none';
 }

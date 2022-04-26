@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('../../partials/Header.ejs') %>
+
+	<body>
+
+		<%- include('../../partials/ManNavbar.ejs') %>
+			<nav class="navbar navbar-expand-lg navbar-light bg-white" style="padding-left: 6rem">
+				<a class="navbar-brand" style="margin: 0px" href="">
+					<img class="logo" src="/assets/dino-logo.png" alt="" />
+				</a>
+				<button class="navbar-toggler mx-3" type="button" data-toggle="collapse" data-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="px-3 collapse navbar-collapse flex-row-reverse" id="navbarNav">
+					<ul class="navbar-nav d-flex align-items-center">
+						<li class="nav-item active px-2">
+							<a class="nav-link" href="">Home</a>
+						</li>
+						<li class="nav-item px-2">
+							<a class="nav-link" href="">About</a>
+						</li>
+						<li class="nav-item">
+							<button class="btn btn-danger" style="margin-top: 0px;">
+								<a href="/logout" style="color: white;">Log Out</a>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="container">
+				<div class="row">
+					<form>
+						<div class="form-group mb-3">
+							<label for="job">Jobs</label>
+							<div class="input-group mb-1">
+								<span class="input-group-text" style="
+								  background-color: transparent;
+								  color: gray;
+								  border-right: none;
+								" id="basic-addon1">
+									<i class="fa-solid fa-id-badge"></i>
+								</span>
+								<select class="form-control mb-1" id="exampleFormControlSelect1"
+									style=" border-top-right-radius: 5px; cursor: pointer;">
+
+									<option id="c">C</option>
+									<option id="cpp">C++</option>
+									<option id="node">Node.js</option>
+									<option id="react">React.js</option>
+								</select>
+							</div>
+						</div>
+
+					</form>
+				</div>
+			</div>
+	</body>
+
+</html>

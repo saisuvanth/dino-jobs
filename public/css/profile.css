@@ -53,6 +53,10 @@
 
 #form-parent {}
 
+.badges {
+  margin: 0rem 0.8rem;
+}
+
 .form-parent-right {}
 
 .image {
