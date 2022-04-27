@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('../../partials/Header.ejs') %>
+
+	<body>
+		<div class="container p-2 m-2 m-auto">
+			<h2 class="text-center">Admin Portal</h2>
+			<nav>
+				<div class="nav nav-tabs" id="nav-tab" role="tablist">
+					<button class="nav-link active" id="nav-user-tab" data-bs-toggle="tab" data-bs-target="#nav-user"
+						type="button" role="tab" aria-controls="nav-user" aria-selected="true">User</button>
+					<button class="nav-link" id="nav-job-tab" data-bs-toggle="tab" data-bs-target="#nav-job"
+						type="button" role="tab" aria-controls="nav-job" aria-selected="false">Job</button>
+					<button class="nav-link" id="nav-company-tab" data-bs-toggle="tab" data-bs-target="#nav-company"
+						type="button" role="tab" aria-controls="nav-company" aria-selected="false">Company</button>
+				</div>
+			</nav>
+			<div class="card p-2">
+				<div class="tab-content" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th scope="row">Full Name</th>
+									<th scope="row">Email</th>
+									<th scope="row">Email Verified</th>
+									<th scope="row">Role</th>
+									<th scope="row">Phone</th>
+									<th scope="row">Address</th>
+									<th scope="row">Skills</th>
+									<th scope="row">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% for (var i=0; i < users.length; i++) { %>
+									<tr>
+										<td>
+											<%= users[i].full_name %>
+										</td>
+										<td>
+											<%= users[i].email %>
+										</td>
+										<td>
+											<%= users[i].email_verified ? "Verified" : "Not verified" %>
+										</td>
+										<td>
+											<%= users[i].type %>
+										</td>
+										<td>
+											<%= users[i].phone %>
+										</td>
+										<td>
+											<%= users[i].address %>
+										</td>
+										<td>
+											<%= users[i].skills.toString() %>
+										</td>
+										<td>
+											<a href=<%=users[i].type !="admin" ? `/admin/delete/user/${users[i]._id}`
+												: 'javascript:void(0)' %> class="btn btn-danger"
+												>Delete</a>
+										</td>
+									</tr>
+									<% } %>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane fade" id="nav-job" role="tabpanel" aria-labelledby="nav-job-tab">
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th scope="row">Role</th>
+									<th scope="row">Type</th>
+									<th scope="row">Description</th>
+									<th scope="row">Company</th>
+									<th scope="row">Salary</th>
+									<th scope="row">Location</th>
+									<th scope="row">Required Skills</th>
+									<th scope="row">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% for (var i=0; i < jobs.length; i++) { %>
+									<tr>
+										<td>
+											<%= jobs[i].role %>
+										</td>
+										<td>
+											<%= jobs[i].type %>
+										</td>
+										<td>
+											<%= jobs[i].description %>
+										</td>
+										<td>
+											<a href="<%= jobs[i].company.website %>">
+												<%= jobs[i].company.name %>
+											</a>
+										</td>
+										<td>
+											<%= jobs[i].salary %>
+										</td>
+										<td>
+											<%= jobs[i].location %>
+										</td>
+										<td>
+											<%= jobs[i].req_skills?.toString() %>
+										</td>
+										<td>
+											<a href="/admin/delete/job/<%= jobs[i]._id %>"
+												class="btn btn-danger">Delete</a>
+										</td>
+									</tr>
+									<% } %>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane fade" id="nav-company" role="tabpanel" aria-labelledby="nav-company-tab">
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th scope="row">Name</th>
+									<th scope="row">Description</th>
+									<th scope="row">Website</th>
+									<th scope="row">Employees</th>
+									<th scope="row">Available Roles</th>
+									<th scope="row">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% for (var i=0; i < companies.length; i++) { %>
+									<tr>
+										<td>
+											<%= companies[i].name %>
+										</td>
+										<td>
+											<%= companies[i].description %>
+										</td>
+										<td>
+											<%= companies[i].website %>
+										</td>
+										<td>
+											<%= companies[i].employees %>
+										</td>
+										<td>
+											<% for (let j=0; j < companies[i].jobs.length; j++) { %>
+												<%= companies[i].jobs[j].role %><br />
+													<% } %>
+										</td>
+										<td>
+											<a href="/admin/delete/company/<%= companies[i]._id %>"
+												class="btn btn-danger">Delete</a>
+										</td>
+									</tr>
+									<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<button class="btn btn-primary m-auto" onclick="window.location.href='/admin'">
+					Refresh
+				</button>
+			</div>
+		</div>
+
+	</body>
+
+</html>

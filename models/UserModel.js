@@ -19,6 +19,7 @@ const UserSchema = new Schema({
   },
   email_verified: {
     type: Boolean,
+    default: false
   },
   password: {
     type: String,
@@ -27,6 +28,7 @@ const UserSchema = new Schema({
   type: {
     type: String,
     default: "user",
+    enum: ["user", "manager", "admin"],
   },
   company: {
     type: Schema.Types.ObjectId,
@@ -93,6 +95,7 @@ const UserSchema = new Schema({
   applied_jobs: [{
     type: Schema.Types.ObjectId,
     ref: "Job",
+    unique: true,
   }
   ],
   prefRole: {
@@ -168,6 +171,7 @@ UserSchema.statics.findByToken = async function (token) {
 
 UserSchema.methods.removeToken = function (token) {
   const user = this;
+  console.log(user.token);
   return user.update({
     $pull: {
       tokens: { token },

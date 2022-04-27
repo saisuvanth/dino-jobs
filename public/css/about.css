@@ -1,0 +1,68 @@
+@import url(//fonts.googleapis.com/css?family=Montserrat:300,500);
+
+.team4 {
+	font-family: "Montserrat", sans-serif;
+	color: #8d97ad;
+	font-weight: 300;
+}
+
+body {
+	background-color: rgb(206, 255, 239);
+}
+
+.team4 h1,
+.team4 h2,
+.team4 h3,
+.team4 h4,
+.team4 h5,
+.team4 h6 {
+	color: black;
+	font-size: 50px;
+}
+
+.team4 .font-weight-medium {
+	font-weight: 500;
+}
+
+.team4 h5 {
+	line-height: 22px;
+	font-size: 25px;
+}
+
+.team4 .subtitle {
+	color: black;
+	line-height: 24px;
+	padding-top: 12px;
+	font-size: 15px;
+}
+
+.team4 ul li a {
+	color: black;
+	padding-right: 15px;
+	-webkit-transition: 0.1s ease-in;
+	-o-transition: 0.1s ease-in;
+	transition: 0.1s ease-in;
+}
+
+.team4 ul li a:hover {
+	-webkit-transform: translate3d(0px, -5px, 0px);
+	transform: translate3d(0px, -5px, 0px);
+	color: #316ce8;
+}
+
+.profile-card {
+	background-color: #5ef1c8;
+	padding: 7%;
+	border-radius: 10%;
+}
+
+img:hover {
+	transform: scale(1.05);
+	-webkit-transition: 0.1s ease-in;
+	-o-transition: 0.1s ease-in;
+}
+
+.pinko {
+	display: flex;
+	justify-content: space-around;
+}

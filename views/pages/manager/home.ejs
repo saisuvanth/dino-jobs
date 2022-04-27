@@ -4,6 +4,7 @@
 <%- include('../../partials/Header.ejs') %>
 
 	<body>
+		<div id="alert-div"></div>
 		<%- include('../../partials/ManNavbar.ejs') %>
 			<nav class="navbar navbar-expand-lg navbar-light bg-white" style="padding-left: 6rem">
 				<a class="navbar-brand" style="margin: 0px" href="">
@@ -16,14 +17,14 @@
 				<div class="px-3 collapse navbar-collapse flex-row-reverse" id="navbarNav">
 					<ul class="navbar-nav d-flex align-items-center">
 						<li class="nav-item active px-2">
-							<a class="nav-link" href="">Home</a>
+							<a class="nav-link" href="/manager/home">Home</a>
 						</li>
 						<li class="nav-item px-2">
-							<a class="nav-link" href="">About</a>
+							<a class="nav-link" href="/about">About</a>
 						</li>
 						<li class="nav-item">
 							<button class="btn btn-danger" style="margin-top: 0px;">
-								<a href="/logout" style="color: white;">Log Out</a>
+								<a href="logout" style="color: white;">Log Out</a>
 							</button>
 						</li>
 					</ul>
@@ -70,8 +71,8 @@
                                   " id="basic-addon1">
 																	<i class="fas fa-user"></i>
 																</span>
-																<input type="text" class="form-control" id="text"
-																	value="<%= user.name %>" />
+																<input name="nam" type="text" class="form-control"
+																	id="text" value="<%= user.name %>" />
 															</div>
 															<label for="email">Email</label>
 															<div class="input-group mb-1">
@@ -82,8 +83,8 @@
                                   " id="basic-addon1">
 																	<i class="fas fa-envelope"></i>
 																</span>
-																<input type="email" class="form-control" id="email"
-																	value="<%= user.email %>" disabled />
+																<input name="email" type="email" class="form-control"
+																	id="email" value="<%= user.email %>" disabled />
 															</div>
 															<label for="phone">Phone</label>
 															<div class="input-group mb-1">
@@ -94,8 +95,9 @@
                                   " id="basic-addon1">
 																	<i class="fas fa-phone"></i>
 																</span>
-																<input type="phone" class="form-control" id="phone"
-																	value="<%= user?.phone %>" pattern="[0-9]{10}" />
+																<input name="phone" type="phone" class="form-control"
+																	id="phone" value="<%= user?.phone %>"
+																	pattern="[0-9]{10}" />
 															</div>
 															<div class="form-group pb-3">
 																<label for="address">Address</label>
@@ -110,8 +112,8 @@
 																<img src="/assets/avatar.jpg" id="user-avatar"
 																	alt="Profile Pic"
 																	class="h-50 rounded-circle image" />
-																<input type="file" name="avatar" id="avatar"
-																	accept="image/*" hidden />
+																<input name="avatar" type="file" name="avatar"
+																	id="avatar" accept="image/*" hidden />
 																<button class="btn btn-success image-add"
 																	onclick="handleImage()">
 																	<i class="fa-solid fa-plus"></i>
@@ -122,7 +124,7 @@
 
 													<div class="form-group">
 														<label for="about">Bio</label>
-														<textarea class="form-control" id="about" rows="3"
+														<textarea name="bio" class="form-control" id="about" rows="3"
 															placeholder="Write about yourself"
 															value="<%= user?.bio %>">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam minima fugiat repellendus quisquam vero est facere, dignissimos magni qui officiis vel nemo ipsam cum aperiam laborum, eius consequatur. Consequatur, aliquid.</textarea>
 													</div>
@@ -142,8 +144,8 @@
                                 " id="basic-addon1">
 																	<i class="fas fa-user"></i>
 																</span>
-																<input type="text" class="form-control" id="text"
-																	value="<%= user.company?.name %>" />
+																<input name="name" type="text" class="form-control"
+																	id="text" value="<%= user.company?.name %>" />
 															</div>
 															<label for="text">Description</label>
 															<div class="input-group mb-1">
@@ -154,7 +156,8 @@
                                 " id="basic-addon1">
 																	<i class="fas fa-envelope"></i>
 																</span>
-																<input type="text" class="form-control" id="text"
+																<input name="description" type="text"
+																	class="form-control" id="text"
 																	value="<%= user.company?.description %>" />
 															</div>
 															<div class="form-group pb-3">
@@ -183,40 +186,22 @@
                                 " id="basic-addon1">
 																	<i class="fas fa-user"></i>
 																</span>
-																<input name="no" type="number" class="form-control"
-																	id="text" value="<%= user.company?.employees %>" />
+																<input name="employees" type="number"
+																	class="form-control" id="text"
+																	value="<%= user.company?.employees %>" />
 															</div>
 
 														</div>
 													</div>
-													<div class="container d-flex justify-content-start">
-														<button type="submit" class="save-changes"
-															data-bs-toggle="modal" data-bs-target="#submitModal">
-															Save Changes
-														</button>
-													</div>
-													<div class="modal fade" id="submitModal" tabindex="-1"
-														aria-labelledby="submitModalLabel" aria-hidden="true">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="submitModalLabel">
-																	Modal title
-																</h5>
-																<button type="button" class="btn-close"
-																	data-bs-dismiss="modal" aria-label="Close"></button>
-															</div>
-															<div class="modal-body">Confirm Submission</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary"
-																	data-bs-dismiss="modal">
-																	Close
-																</button>
-																<button type="button" class="btn btn-primary">
-																	Save changes
-																</button>
-															</div>
-														</div>
-													</div>
+												</div>
+											</div>
+											<div class="container d-flex justify-content-start">
+												<button type="submit" class="save-changes" data-bs-toggle="modal"
+													data-bs-target="#submitModal">
+													Save Changes
+												</button>
+											</div>
+										</div>
 									</form>
 								</div>
 							</div>
@@ -224,4 +209,6 @@
 					</div>
 				</div>
 			</div>
+			<script src="/js/manager.js"></script>
+			<script src="/js/company.js"></script>
 	</body>

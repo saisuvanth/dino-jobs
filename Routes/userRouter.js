@@ -1,13 +1,19 @@
 const { Router } = require("express");
 const {
   login,
-  loginMan,
   signup,
   verifyEmail,
   updateUser,
-  applyJob
+  applyJob,
+  createJob,
+  uploadUserPhoto,
+  resizeUserPhoto,
+  logout,
+  deleteUser,
+  getJobApplicants,
+  managerProfile
 } = require("../controllers/userController");
-const { getLogin, errorHandler } = require("../middleware");
+const { getLogin, checkMan, checkAdmin } = require("../middleware");
 const router = Router();
 
 
@@ -20,35 +26,20 @@ router.get('/home', getLogin, (req, res, next) => {
 })
 
 router.post("/:title/login", (req, res, next) => {
-  console.log(req.params.title);
-  if (req.params.title === 'manager') {
-    loginMan(req).then((token) => {
-      if (token) {
-        res
-          .cookie("login", token)
-          .status(200)
-          .json({ message: "Login Successful" });
-      } else {
-        res.status(401).json({ message: "Unauthorized" });
-      }
-    }).catch(err => {
-      res.status(400).json({ message: err });
-    })
-  }
-  else {
-    login(req).then((token) => {
-      if (token) {
-        res
-          .cookie("login", token)
-          .status(200)
-          .json({ message: "Login Successful" });
-      } else {
-        res.status(401).json({ message: "Unauthorized" });
-      }
-    }).catch(err => {
-      res.status(400).json({ message: err });
-    })
-  }
+  login(req, req.params.title, res).then((token) => {
+    if (token) {
+      res
+        .cookie("login", token)
+        .status(200)
+        .json({ message: "Login Successful" });
+    } else {
+      req.err = "Invalid Credentials";
+      next();
+    }
+  }).catch(err => {
+    req.err = err;
+    next();
+  })
 });
 
 router.post("/:title/register", async (req, res, next) => {
@@ -65,15 +56,19 @@ router.get("/verify/:token", (req, res, next) => {
   }
 });
 
-router.post("/update-user", getLogin, updateUser, errorHandler);
 
-router.post('/apply-job', getLogin, applyJob, errorHandler);
+router.post("/update-user", getLogin, uploadUserPhoto, updateUser);
 
-router.get('/logout', (req, res) => {
-  res.clearCookie('login');
-  res.redirect('/');
-});
+router.post('/apply-job', getLogin, applyJob);
 
+router.post('/create-job', getLogin, checkMan, createJob);
 
+router.get('/:type/logout', getLogin, logout);
+
+router.get('/admin/delete/:type/:user', getLogin, checkAdmin, deleteUser);
+
+router.post('/job/:job', getLogin, checkMan, getJobApplicants);
+
+router.post('/manager/home', getLogin, checkMan, managerProfile);
 
 module.exports = router;

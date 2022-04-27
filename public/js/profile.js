@@ -1,12 +1,14 @@
 const img = document.getElementById("avatar");
 const avatar_container = document.getElementById("user-avatar");
 let b64str = "";
-function handleImage() {
+function handleImage(event) {
+  event.preventDefault();
   document.getElementById("avatar").click();
 }
 
-document.getElementById("avatar").addEventListener("change", function (e) {
-  const file = e.target.files[0];
+document.getElementById("avatar").addEventListener("change", function (event) {
+  event.preventDefault();
+  const file = event.target.files[0];
   const reader = new FileReader();
   reader.onload = function (e) {
     avatar_container.src = e.target.result;
@@ -25,15 +27,12 @@ async function handleSubmit(event) {
   formData.forEach((value, key) => {
     data[key] = value;
   });
-  data.avatar = b64str;
+  // data.avatar = b64str;
   fetch("/update-user", {
     method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    body: formData,
   })
-  console.log(data);
+  console.log(formData);
 }
 
 // function repeat() {

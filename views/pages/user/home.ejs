@@ -22,11 +22,11 @@
               <a class="nav-link" href="">Home</a>
             </li>
             <li class="nav-item px-2">
-              <a class="nav-link" href="">About</a>
+              <a class="nav-link" href="/about">About</a>
             </li>
             <li class="nav-item">
               <button class="btn btn-danger" style="margin-top: 0px;">
-                <a href="/logout" style="color: white;">Log Out</a>
+                <a href="/user/logout" style="color: white;">Log Out</a>
               </button>
             </li>
           </ul>
@@ -34,90 +34,116 @@
       </nav>
       <div class="main">
         <div class="container-fluid" style="background-color: #ffffff">
-          <div class="row pt-4">
-            <div class="col-lg-3 col-md-6 col-sm-12 form-container w-20">
-              <div class="input-group mb-3">
-                <span class="input-group-text" style="
+          <form onsubmit="handleSearch()">
+            <div class="row pt-4">
+
+              <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 form-container w-20">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" style="
                   background-color: white;
                   border-right: 0px;
                   border-radius: 30px 0px 0px 30px;
                 " id="basic-addon1">
-                  <i class="fas fa-magnifying-glass"></i>
-                </span>
-                <input type="text" class="form-control" name="search"
-                  style="border-left: 0px; border-radius: 0px 30px 30px 0px" placeholder="Search" aria-label="Username"
-                  aria-describedby="basic-addon1" />
+                    <i class="fas fa-magnifying-glass"></i>
+                  </span>
+                  <input type="text" class="form-control" name="jobSearch"
+                    style="border-left: 0px; border-radius: 0px 30px 30px 0px" placeholder="Search"
+                    aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 form-container w-20">
-              <div class="input-group mb-3">
-                <span class="input-group-text" style="
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 form-container w-20">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" style="
                   background-color: white;
                   border-right: 0px;
                   border-radius: 30px 0px 0px 30px;
                 " id="basic-addon1">
-                  <i class="fas fa-location"></i>
-                </span>
-                <input type="text" class="form-control" style="border-left: 0px; border-radius: 0px 30px 30px 0px"
-                  placeholder="Location" aria-label="Username" aria-describedby="basic-addon1" />
+                    <i class="fas fa-location"></i>
+                  </span>
+                  <input type="text" class="form-control" name="locationSearch"
+                    style="border-left: 0px; border-radius: 0px 30px 30px 0px" placeholder="Location"
+                    aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 form-container w-20">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" style="
+                  background-color: white;
+                  border-right: 0px;
+                  border-radius: 30px 0px 0px 30px;
+                " id="basic-addon1">
+                    <i class="fas fa-magnifying-glass"></i>
+                  </span>
+                  <input type="text" class="form-control" name="companySearch"
+                    style="border-left: 0px; border-radius: 0px 30px 30px 0px" placeholder="Company Search"
+                    aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
               </div>
             </div>
-          </div>
+            <div class="row pt-3 d-flex justify-content-center">
+              <button type="submit" class="btn btn-success"
+                style="width: fit-content;height: fit-content;">Search</button>
+            </div>
+          </form>
           <hr />
           <div class="row parent-row">
             <div class="col-md-2 col-sm-0 p-3 border-end border-2 border-light" tabindex="-1" id="filter-parent"
               aria-labelledby="offcanvasExampleLabel">
               <div class="mycol-1 p-3 filters">
-                <div class="offcanvas-header p-0 pb-2 mb-4 border-bottom border-2 border-light">
-                  <h3 class="offcanvas-title" id="offcanvasExampleLabel">
-                    Filters
-                  </h3>
-                  <button type="button" id="filter-close-button" class="btn-close text-reset"
-                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="filter-container">
-                  <h5 class="filter-container-head">Role</h5>
-                  <ul style="list-style: none; padding-left: 10px">
-                    <li>
-                      <input class="form-check-input" type="checkbox" name="Job" id="job" />
-                      <label for="job">Job</label>
-                    </li>
-                    <li>
-                      <input class="form-check-input" type="checkbox" name="internship" id="internship" />
-                      <label for="internship">Internship</label>
-                    </li>
-                  </ul>
-                </div>
-                <div class="filter-container">
-                  <h5 class="filter-container-head">Role Type</h5>
-                  <ul style="list-style: none; padding-left: 10px">
-                    <li>
-                      <input class="form-check-input" type="checkbox" name="Job" id="job" />
-                      <label for="job">Full Time</label>
-                    </li>
-                    <li>
-                      <input class="form-check-input" type="checkbox" name="internship" id="internship" />
-                      <label for="internship">Part Time</label>
-                    </li>
-                    <li>
-                      <input class="form-check-input" type="checkbox" name="internship" id="internship" />
-                      <label for="internship">Project Based</label>
-                    </li>
-                  </ul>
-                </div>
-                <div class="filter-container">
-                  <h5 class="filter-container-head">Job Type</h5>
-                  <ul style="list-style: none; padding-left: 10px">
-                    <li>
-                      <input class="form-check-input" type="checkbox" name="Job" id="job" />
-                      <label for="job">Full Time Job</label>
-                    </li>
-                    <li>
-                      <input class="form-check-input" type="checkbox" name="internship" id="internship" />
-                      <label for="internship">Internship</label>
-                    </li>
-                  </ul>
-                </div>
+                <form onsubmit="handleFilter(event)">
+                  <div class="offcanvas-header p-0 pb-2 mb-4 border-bottom border-2 border-light">
+                    <h3 class="offcanvas-title" id="offcanvasExampleLabel">
+                      Filters
+                    </h3>
+                    <button type="button" id="filter-close-button" class="btn-close text-reset"
+                      data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="filter-container">
+                    <h5 class="filter-container-head">Role</h5>
+                    <ul style="list-style: none; padding-left: 10px">
+                      <li>
+                        <input class="form-check-input" type="checkbox" name="Job" id="job" />
+                        <label for="job">Job</label>
+                      </li>
+                      <li>
+                        <input class="form-check-input" type="checkbox" name="internship" id="internship" />
+                        <label for="internship">Internship</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="filter-container">
+                    <h5 class="filter-container-head">Role Type</h5>
+                    <ul style="list-style: none; padding-left: 10px">
+                      <li>
+                        <input class="form-check-input" type="checkbox" name="fulltime" id="fulltime" />
+                        <label for="fulltime">Full Time</label>
+                      </li>
+                      <li>
+                        <input class="form-check-input" type="checkbox" name="partime" id="partime" />
+                        <label for="partime">Part Time</label>
+                      </li>
+                      <li>
+                        <input class="form-check-input" type="checkbox" name="project" id="project" />
+                        <label for="project">Project Based</label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="filter-container">
+                    <h5 class="filter-container-head">Job Type</h5>
+                    <ul style="list-style: none; padding-left: 10px">
+                      <li>
+                        <label for="salary">Full Time Job</label>
+                        <input class="form-range" type="range" name="salary" id="salary" max="50000" min="2000"
+                          step="1000" value="5000" oninput="this.nextElementSibling.value = this.value" />
+                        <output>5000</output>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="filter-container">
+                    <button class="btn btn-primary" type="submit" style="width: fit-content;">Filter</button>
+                  </div>
+                </form>
+
               </div>
             </div>
             <div class="col-md-9 col-sm-12 p-3 scroll-row">
@@ -126,9 +152,8 @@
               </div>
               <div class="container fluid">
                 <div class="row fluid">
-                  <% for (let i=1; i < 36; i++) { %>
-                    <%- include('../../partials/JobCard.ejs', {job: jobs[i.toString()], index:
-                      i.toString(),buttonflag:true}) %>
+                  <% for (let i=1; i < jobs.length; i++) { %>
+                    <%- include('../../partials/JobCard.ejs', {jobs: jobs, index: i.toString(),buttonflag:true}) %>
                       <% } %>
                 </div>
               </div>

@@ -10,10 +10,10 @@ const getLogin = (req, res, next) => {
             req.user = user.toJSON();
             next();
           } else {
-            throw "Email not verified";
+            next("Email not verified");
           }
         } else {
-          throw "User not found";
+          next("User not found");
         }
       })
       .catch((err) => {
@@ -23,7 +23,10 @@ const getLogin = (req, res, next) => {
         } else if (err === 'Email not verified') {
           clearLogin(res);
           res.redirect('/');
-        } else {
+        } else if (err.name === 'MongooseError') {
+          next("Server Error")
+        }
+        else {
           err
             .removeToken(cookie)
             .then(() => {
@@ -41,7 +44,7 @@ const checkMan = (req, res, next) => {
   if (req.user.type === 'manager') {
     next();
   } else {
-    throw 'Unauthorized Request';
+    next('Unauthorized Request');
   }
 }
 
@@ -60,9 +63,17 @@ const loginFlag = (req, res, next) => {
   }
 };
 
-const errorHandler = (req, res, next) => {
-  console.log(req.err);
-  res.status(500).send("Something went wrong");
+const checkAdmin = (req, res, next) => {
+  if (req.user.type === 'admin') {
+    next();
+  } else {
+    res.status(403).redirect('/admin/login');
+  }
+}
+
+const errorHandler = (err = 'Page Not Found', req, res, next) => {
+  console.log(err);
+  res.status(200).render('pages/error.ejs', { message: err });
 };
 
-module.exports = { getLogin, loginFlag, errorHandler, checkMan };
+module.exports = { getLogin, loginFlag, errorHandler, checkMan, checkAdmin };

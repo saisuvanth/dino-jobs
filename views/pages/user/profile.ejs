@@ -129,10 +129,10 @@
                           </div>
                           <div class="col col-3 d-flex justify-content-center align-items-center form-parent-right">
                             <div>
-                              <img src="<%= user.avatar %>" id="user-avatar" alt="Profile Pic"
+                              <img src="/uploads/<%= user.avatar %>" id="user-avatar" alt="Profile Pic"
                                 class="h-50 rounded-circle image" />
                               <input type="file" name="avatar" id="avatar" accept="image/*" hidden />
-                              <button class="btn btn-success image-add" onclick="handleImage()">
+                              <button class="btn btn-success image-add" onclick="handleImage(event)">
                                 <i class="fa-solid fa-plus"></i>
                               </button>
                             </div>

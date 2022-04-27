@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../partials/Header.ejs') %>
+
+	<body>
+		<%- include('../../partials/ManNavbar.ejs') %>
+			<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;width: 50%;">
+				<form onsubmit="handleSubmit(event)" style="width: inherit;">
+					<div class="row">
+						<label for="Job">Job</label>
+						<select name="job" class="form-select" aria-label="Default select example"
+							onchange="handleGetUser()">
+							<% for(let i=0;i<jobs.length;i++) {%>
+								<option value="<%= jobs[i].role%>">
+									<%= jobs[i].role%>
+								</option>
+								<% } %>
+						</select>
+					</div>
+					<div class="row">
+						<label for="applicant">Applicant</label>
+						<select name="applicant" class="form-select" aria-label="Default select example2">
+
+						</select>
+					</div>
+					<button type="submit" class="btn btn-success">Create Meet</button>
+				</form>
+			</div>
+			<script src="/js/interviewHandler.js"></script>
+	</body>
+
+</html>

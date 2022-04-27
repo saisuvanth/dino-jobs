@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Sirin+Stencil&display=swap');
+
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.bg {
+	width: 100%;
+	height: 100vh;
+	min-height: 45em;
+	background: linear-gradient(#99e6ff, #3ccfff, #1e9dc5);
+	position: relative;
+	font-size: 1vw;
+	overflow-x: hidden;
+}
+
+.water {
+	width: 100%;
+	height: 2em;
+	background: linear-gradient(#177fdf, #003ec4);
+	position: absolute;
+	bottom: 0;
+}
+
+.hill1 {
+	width: 63em;
+	height: 4em;
+	background: linear-gradient(#00be17, #009832, #006007);
+	border-radius: 50% 50% 0% 100% / 100% 44% 56% 0%;
+	position: absolute;
+	bottom: 2em;
+	right: 0em;
+}
+
+.hill2 {
+	width: 42em;
+	height: 3.5em;
+	background: linear-gradient(#00c218, #009832, #006007);
+	border-radius: 34% 66% 70% 30% / 100% 100% 0% 0%;
+	position: absolute;
+	bottom: 2em;
+	left: -2em;
+}
+
+.bridge-p1 {
+	width: 100%;
+	height: 0.25em;
+	background: #333;
+	position: absolute;
+	bottom: 14.5em;
+}
+
+.bridge-p2 {
+	width: 100%;
+	height: 1em;
+	background: #555;
+	position: absolute;
+	bottom: 13.5em;
+}
+
+.bridge-p3 {
+	width: 100%;
+	height: 0.5em;
+	background: #333;
+	position: absolute;
+	bottom: 13em;
+}
+
+.bridge-p4 {
+	width: 100%;
+	height: 13em;
+	background:
+		radial-gradient(transparent 0 48%,
+			#444 49% 52%,
+			#777 53% 100%) 0 0 / 35em 26em;
+	position: absolute;
+	bottom: 0;
+}
+
+.bridge-p4:before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	display: block;
+	background:
+		conic-gradient(from 270deg, #787878 0 90deg, #888888 90deg 180deg, transparent 180deg 360deg) 0 0 / 8em 4em,
+		conic-gradient(from 90deg, #656565 0 90deg, #5d5d5d 90deg 180deg, transparent 180deg 360deg) 2em 0em / 8em 4em;
+	mask-image: radial-gradient(transparent 0 52%, #000000 53% 100%);
+	-webkit-mask-image: radial-gradient(transparent 0 52%, #000000 53% 100%);
+	mask-size: 35em 26em;
+	-webkit-mask-size: 35em 26em;
+}
+
+.train {
+	width: 80em;
+	height: 8em;
+	position: absolute;
+	bottom: 14.75em;
+	left: 5%;
+	display: flex;
+	animation: train-move 20s cubic-bezier(0.3, 1, 0.7, 0) 0s infinite normal;
+}
+
+@keyframes train-move {
+	0% {
+		transform: translateX(-150%);
+	}
+
+	100% {
+		transform: translateX(150%);
+	}
+}
+
+.train-bottom {
+	width: 100%;
+	height: 10%;
+	background: #721919;
+	position: absolute;
+	bottom: 0;
+}
+
+.train-p1 {
+	width: 33%;
+	height: 95%;
+	background:
+		repeating-linear-gradient(90deg, #be0707 0 5%, #dbdbdb00 5% 19%),
+		linear-gradient(#be0707 0 30%, #dbdbdb 30% 60%, #be0707 60%);
+	position: relative;
+	border-radius: 5% 5% 2% 2% / 10% 10% 4% 4%;
+	border-right: 0.3em solid #a90e0e;
+}
+
+.train-p2 {
+	width: 33%;
+	height: 95%;
+	background:
+		repeating-linear-gradient(90deg, #be0707 0 5%, #dbdbdb00 5% 19%),
+		linear-gradient(#be0707 0 30%, #dbdbdb 30% 60%, #be0707 60%);
+	;
+	position: relative;
+	border-radius: 5% 5% 2% 2% / 10% 10% 4% 4%;
+	border-left: 0.3em solid #a90e0e;
+	border-right: 0.3em solid #a90e0e;
+}
+
+.train-p3 {
+	width: 34%;
+	height: 95%;
+	background:
+		linear-gradient(90deg, #be0707 0 5%, transparent 5% 19%, #be0707 19% 24%, transparent 24% 38%, #be0707 38% 43%, transparent 43% 57%),
+		linear-gradient(#be0707 0 30%, #dbdbdb 30% 60%, #be0707 60%);
+	position: relative;
+	border-radius: 5% 100% 2% 2% / 10% 100% 4% 4%;
+	border-left: 0.3em solid #a90e0e;
+}
+
+.flag {
+	width: 20%;
+	height: 70%;
+	position: relative;
+	top: -70%;
+	left: 0%;
+	transform: translateX(-50%);
+}
+
+.flag-top {
+	width: 100%;
+	height: 50%;
+	background: #741010;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	clip-path: polygon(0 0, 33% 10%, 66% 0, 100% 10%, 100% 100%, 66% 90%, 33% 99%, 0 90%);
+}
+
+.pillar {
+	width: 10%;
+	height: 55%;
+	background: #741010;
+	position: absolute;
+	top: 45%;
+	right: 0%;
+}
+
+.flag-top span {
+	color: #fff;
+	font-size: 1.4em;
+	font-family: 'Sirin Stencil', cursive;
+}
+
+.message {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 15px 20px;
+	margin-top: 10vh;
+	text-align: center;
+	background: #fff5;
+	display: inline-table;
+	max-width: 90vw;
+	border-radius: 10px;
+}
+
+.message p:nth-child(1) {
+	color: #454444;
+	font-size: clamp(36px, 4em, 150px);
+	font-family: cursive;
+	font-weight: bold;
+	animation: text1-animation 1s linear 0s 1 normal forwards;
+	opacity: 0;
+}
+
+.message p:nth-child(2) {
+	color: #454444;
+	font-size: clamp(24px, 2em, 100px);
+	font-family: monospace;
+	font-weight: bold;
+	margin-bottom: 10px;
+	animation: text1-animation 0.8s linear 1s 1 normal forwards;
+	opacity: 0;
+}
+
+.message p:nth-child(3) {
+	color: #454444;
+	font-size: clamp(20px, 1.5em, 80px);
+	font-family: sans-serif;
+	animation: text2-animation 0.5s linear 1.8s 1 normal forwards;
+	opacity: 0;
+}
+
+@keyframes text1-animation {
+	0% {
+		transform: translate(20em, -50vh) rotate(0deg);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translate(0em, 0vh) rotate(-360deg);
+		opacity: 1;
+	}
+}
+
+@keyframes text2-animation {
+	0% {
+		transform: translate(20em, -50vh);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translate(0em, 0vh);
+		opacity: 1;
+	}
+}

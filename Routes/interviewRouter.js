@@ -9,7 +9,7 @@ router.get("/interview", getLogin, (req, res) => {
 });
 
 router.get('/interview-scheduler', getLogin, checkMan, (req, res) => {
-  res.render('interview-scheduler');
+  res.render('interviewHandler');
 })
 
 router.get("/interview/:roomId", getLogin, (req, res) => {

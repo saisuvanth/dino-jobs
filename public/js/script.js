@@ -128,8 +128,8 @@ const startVideo = () => {
   navigator.mediaDevices
     .getUserMedia({ video: true, audio: true })
     .then((stream) => {
-      currUser.peer.addStream(stream);
       addVideoStream(localVideo, stream);
+      currUser.peer.addStream(stream);
     })
     .catch((err) => console.log(err));
 };

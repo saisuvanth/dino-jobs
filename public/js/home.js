@@ -42,3 +42,28 @@ function removeOffCanvas() {
 	filterDiv.style.visibility = 'visible';
 	filterBut.style.display = 'none';
 }
+
+async function handleFilter(event) {
+	event.preventDefault();
+	const form = event.target;
+	const data = new FormData(form);
+
+}
+
+async function handleSearch(event) {
+	event.preventDefault();
+	const form = event.target;
+	const formData = new FormData(form);
+	const data = {};
+	formData.forEach((value, key) => {
+		data[key] = value;
+	});
+	let flag = '';
+	for (let i in data) {
+		if (data[i] == '') {
+			flag = i;
+		}
+	}
+	const res = await fetch(`http://localhost:3000/user/home/search/${flag}/${data[flag]}`);
+	console.log(res);
+}
